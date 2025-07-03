@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "여행을 떠나요",
+    "image": "/images/basic.jpg"
+  },
+  {
+    "id": 2,
+    "title": "한국으로",
+    "image": "/images/basic.jpg"
+  },
+  {
+    "id": 1,
+    "title": "프랑스로",
+    "image": "/images/paris.jpg"
+  },
+  {
+    "id": 1,
+    "title": "태국으로",
+    "image": "/images/bangkok.jpg"
+  },
+  {
+    "id": 1,
+    "title": "몰디브로",
+    "image": "/images/maldives.jpg"
+  }
+]
