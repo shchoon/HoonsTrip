@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Carousel from "./components/Carousel/Carousel";
 import FlightCard from "./components/Card/FlightCard";
+import { useEffect } from "react";
 
 function App() {
   const testData = {
@@ -17,6 +18,12 @@ function App() {
     currency: "KRW",
     promotionTag: "특가",
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3333/flight").then((res) =>
+      console.log(res.json())
+    );
+  }, []);
 
   return (
     <>
