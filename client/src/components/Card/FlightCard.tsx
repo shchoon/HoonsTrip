@@ -7,7 +7,8 @@ type Props = {
 };
 
 const Card = styled.div`
-  min-width: 200px;
+  min-width: 120px;
+  width: auto;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   overflow: hidden;
@@ -20,6 +21,7 @@ const Card = styled.div`
 
   &:hover {
     transform: translateY(-5px);
+    cursor: pointer;
   }
 `;
 
@@ -92,8 +94,8 @@ export default function FlightCard({ flightData }: Props) {
           {flightData.arrivalAirport} → {flightData.departureAirport}
         </Route>
         <Country>목적지: {flightData.arrivalCountry}</Country>
-        <Date>출국: {flightData.inboundDate}</Date>
-        <Date>귀국: {flightData.outboundDate}</Date>
+        <Date>출국: {flightData.outboundDate}</Date>
+        <Date>귀국: {flightData.inboundDate}</Date>
         <Price>{flightData.price} KRW</Price>
         <PromotionTag>{flightData.promotionTag}</PromotionTag>
       </InfoBox>
