@@ -31,3 +31,15 @@ export type Hotel = {
   currency: string; // 통화 (예: "KRW")
   promotionTag: string; // 프로모션 문구
 };
+
+export type Activity = {
+  id: number;
+  activityName: string;
+  imageUrl: string;
+  location: string;
+  activityDate: string; // ISO 날짜 문자열, 예: "2024-09-15"
+  durationHours: number; // 소요 시간 (시간 단위)
+  price: number;
+  currency: string; // 예: "KRW"
+  promotionTag: string; // 예: "특가", "조기예약 할인"
+};

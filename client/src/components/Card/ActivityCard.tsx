@@ -1,40 +1,48 @@
 import styled from "styled-components";
 
-import type { Hotel } from "../../type";
+import type { Activity } from "../../type";
+
+type Props = {
+  activityData: Activity;
+};
 
 const Card = styled.div`
   min-width: 120px;
+  width: auto;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 10px;
   transition: transform 0.2s ease;
+
   &:hover {
     transform: translateY(-5px);
     cursor: pointer;
   }
 `;
 
-const HotelImage = styled.img`
+const ActivityImage = styled.img`
   width: 100%;
-  height: 160px;
+  height: 120px;
   object-fit: cover;
+  border-radius: 8px;
 `;
 
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 10px;
+  gap: 3px;
 `;
 
-const HotelName = styled.h3`
+const ActivityName = styled.h3`
   font-size: 16px;
   font-weight: 600;
   color: #111827;
-  min-height: 50px;
+  margin: 0;
 `;
 
 const Location = styled.div`
@@ -43,7 +51,12 @@ const Location = styled.div`
 `;
 
 const Date = styled.div`
-  font-size: 12px;
+  font-size: 13px;
+  color: #6b7280;
+`;
+
+const Duration = styled.div`
+  font-size: 13px;
   color: #6b7280;
 `;
 
@@ -63,26 +76,22 @@ const PromotionTag = styled.span`
   border-radius: 6px;
 `;
 
-type Props = {
-  hotelData: Hotel;
-};
-
-export default function HotelCard({ hotelData }: Props) {
+export default function ActivityCard({ activityData }: Props) {
   return (
     <Card>
-      <HotelImage src={hotelData.hotelImageUrl} alt={hotelData.hotelName} />
+      <ActivityImage
+        src={activityData.imageUrl}
+        alt={activityData.activityName}
+      />
       <InfoBox>
-        <HotelName>{hotelData.hotelName}</HotelName>
-        <Location>{hotelData.location}</Location>
-        <Date>
-          체크인: {hotelData.checkInDate}
-          <br />
-          체크아웃: {hotelData.checkOutDate}
-        </Date>
+        <ActivityName>{activityData.activityName}</ActivityName>
+        <Location>{activityData.location}</Location>
+        <Date>날짜: {activityData.activityDate}</Date>
+        <Duration>소요 시간: {activityData.durationHours}시간</Duration>
         <Price>
-          {hotelData.totalPrice.toLocaleString()} {hotelData.currency}
+          {activityData.price} {activityData.currency}
         </Price>
-        <PromotionTag>{hotelData.promotionTag}</PromotionTag>
+        <PromotionTag>{activityData.promotionTag}</PromotionTag>
       </InfoBox>
     </Card>
   );

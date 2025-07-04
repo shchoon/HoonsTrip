@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import FlightCard from "../Card/FlightCard";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+import FlightCard from "../Card/FlightCard";
 import HotelCard from "../Card/HotelCard";
+import ActivityCard from "../Card/ActivityCard";
 
 const Container = styled.div`
   width: 90%;
@@ -50,11 +52,13 @@ export default function MainContainer() {
   const [products, setProducts] = useState({
     flight: [],
     hotel: [],
+    activity: [],
   });
 
   const fetchUrls = [
     "http://localhost:3333/flight",
     "http://localhost:3333/hotel",
+    "http://localhost:3333/activity",
   ];
 
   useEffect(() => {
@@ -66,6 +70,7 @@ export default function MainContainer() {
         ...prev,
         flight: data[0].slice(0, 3),
         hotel: data[1].slice(0, 3),
+        activity: data[2].slice(0, 3),
       }));
     };
 
@@ -93,6 +98,17 @@ export default function MainContainer() {
           <CardContainer>
             {products.hotel.map((product) => {
               return <HotelCard hotelData={product} />;
+            })}
+          </CardContainer>
+          <LoadMore src="/public/load-more.png" />
+        </ProductContent>
+      </ProductContainer>
+      <ProductContainer>
+        <ProductTitle>특가 호텔</ProductTitle>
+        <ProductContent>
+          <CardContainer>
+            {products.activity.map((product) => {
+              return <ActivityCard activityData={product} />;
             })}
           </CardContainer>
           <LoadMore src="/public/load-more.png" />

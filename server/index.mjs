@@ -49,6 +49,7 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
+    // 항공편
     if (pathname === "/flight") {
       try {
         const filePath = path.join(__dirname, "data", "Flight.json");
@@ -63,6 +64,7 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
+    // 호텔
     if (pathname === "/hotel") {
       try {
         const filePath = path.join(__dirname, "data", "Hotel.json");
@@ -74,6 +76,21 @@ const server = http.createServer(async (req, res) => {
       } catch (error) {
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Failed to load hotel data" }));
+      }
+    }
+
+    // 액티비티
+    if (pathname === "/activity") {
+      try {
+        const filePath = path.join(__dirname, "data", "Activity.json");
+        const content = await fs.readFile(filePath, "utf-8");
+        const activityData = JSON.parse(content);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(activityData));
+      } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Failed to load activity data" }));
       }
     }
   }
