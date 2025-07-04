@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "여행을 떠나요",
+    "image": "http://localhost:3333/images/basic.jpg"
+  },
+  {
+    "id": 2,
+    "title": "한국으로",
+    "image": "http://localhost:3333/images/korea.jpg"
+  },
+  {
+    "id": 3,
+    "title": "프랑스로",
+    "image": "http://localhost:3333/images/paris.jpg"
+  },
+  {
+    "id": 4,
+    "title": "태국으로",
+    "image": "http://localhost:3333/images/bangkok.jpg"
+  },
+  {
+    "id": 5,
+    "title": "몰디브로",
+    "image": "http://localhost:3333/images/maldives.jpg"
+  },
+  {
+    "id": 6,
+    "title": "일본으로",
+    "image": "http://localhost:3333/images/japan.jpg"
+  },
+  {
+    "id": 7,
+    "title": "독일로",
+    "image": "http://localhost:3333/images/germany.jpg"
+  },
+  {
+    "id": 8,
+    "title": "스위스로",
+    "image": "http://localhost:3333/images/swiss.jpg"
+  },
+  {
+    "id": 9,
+    "title": "베트남으로",
+    "image": "http://localhost:3333/images/vietnam.jpg"
+  }
+]
