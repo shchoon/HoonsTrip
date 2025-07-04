@@ -62,6 +62,20 @@ const server = http.createServer(async (req, res) => {
         res.end(JSON.stringify({ error: "Failed to load flight data" }));
       }
     }
+
+    if (pathname === "/hotel") {
+      try {
+        const filePath = path.join(__dirname, "data", "Hotel.json");
+        const content = await fs.readFile(filePath, "utf-8");
+        const hotelData = JSON.parse(content);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(hotelData));
+      } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Failed to load hotel data" }));
+      }
+    }
   }
 });
 

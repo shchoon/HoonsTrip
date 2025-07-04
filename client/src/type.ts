@@ -17,3 +17,17 @@ export type Flight = {
   currency: string; // 통화 단위
   promotionTag: string; // 프로모션 태그 (ex: 특가, 한정)
 };
+
+export type Hotel = {
+  id: number;
+  hotelName: string;
+  hotelImageUrl: string;
+  location: string;
+  checkInDate: string; // ISO 날짜 문자열 (예: "2024-12-20")
+  checkOutDate: string; // ISO 날짜 문자열
+  pricePerNight: number; // 1박 가격
+  totalNights: number; // 총 숙박일수
+  totalPrice: number; // 총 가격
+  currency: string; // 통화 (예: "KRW")
+  promotionTag: string; // 프로모션 문구
+};

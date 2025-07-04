@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import FlightCard from "../Card/FlightCard";
 import { useEffect, useState } from "react";
+import HotelCard from "../Card/HotelCard";
 
 const Container = styled.div`
   width: 90%;
@@ -48,16 +49,23 @@ const LoadMore = styled.img`
 export default function MainContainer() {
   const [products, setProducts] = useState({
     flight: [],
+    hotel: [],
   });
+
+  const fetchUrls = [
+    "http://localhost:3333/flight",
+    "http://localhost:3333/hotel",
+  ];
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("http://localhost:3333/flight");
-      const data = await res.json();
+      const responses = await Promise.all(fetchUrls.map((url) => fetch(url)));
+      const data = await Promise.all(responses.map((res) => res.json()));
 
       setProducts((prev) => ({
         ...prev,
-        flight: data.slice(0, 3),
+        flight: data[0].slice(0, 3),
+        hotel: data[1].slice(0, 3),
       }));
     };
 
@@ -83,19 +91,8 @@ export default function MainContainer() {
         <ProductTitle>특가 호텔</ProductTitle>
         <ProductContent>
           <CardContainer>
-            {products.flight.map((product) => {
-              return <FlightCard flightData={product} />;
-            })}
-          </CardContainer>
-          <LoadMore src="/public/load-more.png" />
-        </ProductContent>
-      </ProductContainer>
-      <ProductContainer>
-        <ProductTitle>추천 액티비티</ProductTitle>
-        <ProductContent>
-          <CardContainer>
-            {products.flight.map((product) => {
-              return <FlightCard flightData={product} />;
+            {products.hotel.map((product) => {
+              return <HotelCard hotelData={product} />;
             })}
           </CardContainer>
           <LoadMore src="/public/load-more.png" />
