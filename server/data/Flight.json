@@ -2,7 +2,8 @@
   {
     "id": 1,
     "airlineName": "Korean Air",
-    "airlineLogoUrl": "/images/korean-air-logo.png",
+    "country": "japan",
+    "countryImage": "http://localhost:3333/images/country/japan.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "NRT",
     "arrivalCountry": "일본",
@@ -15,7 +16,8 @@
   {
     "id": 2,
     "airlineName": "Asiana Airlines",
-    "airlineLogoUrl": "/images/asiana-logo.png",
+    "country": "hong-kong",
+    "countryImage": "http://localhost:3333/images/country/hong-kong.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "HKG",
     "arrivalCountry": "홍콩",
@@ -28,7 +30,8 @@
   {
     "id": 3,
     "airlineName": "Jeju Air",
-    "airlineLogoUrl": "/images/jeju-air-logo.png",
+    "country": "thailand",
+    "countryImage": "http://localhost:3333/images/country/thailand.jpeg",
     "departureAirport": "CJU",
     "arrivalAirport": "BKK",
     "arrivalCountry": "태국",
@@ -41,7 +44,8 @@
   {
     "id": 4,
     "airlineName": "T'way Air",
-    "airlineLogoUrl": "/images/tway-logo.png",
+    "country": "singapore",
+    "countryImage": "http://localhost:3333/images/country/singapore.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "SIN",
     "arrivalCountry": "싱가포르",
@@ -54,7 +58,8 @@
   {
     "id": 5,
     "airlineName": "Vietnam Airlines",
-    "airlineLogoUrl": "/images/vietnam-airlines-logo.png",
+    "country": "vietnam",
+    "countryImage": "http://localhost:3333/images/country/vietnam.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "HAN",
     "arrivalCountry": "베트남",
@@ -67,7 +72,8 @@
   {
     "id": 6,
     "airlineName": "Cathay Pacific",
-    "airlineLogoUrl": "/images/cathay-pacific-logo.png",
+    "country": "hong-kong",
+    "countryImage": "http://localhost:3333/images/country/hong-kong.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "HKG",
     "arrivalCountry": "홍콩",
@@ -80,7 +86,8 @@
   {
     "id": 7,
     "airlineName": "AirAsia",
-    "airlineLogoUrl": "/images/airasia-logo.png",
+    "country": "malaysia",
+    "countryImage": "http://localhost:3333/images/country/malaysia.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "KUL",
     "arrivalCountry": "말레이시아",
@@ -93,7 +100,8 @@
   {
     "id": 8,
     "airlineName": "Singapore Airlines",
-    "airlineLogoUrl": "/images/singapore-airlines-logo.png",
+    "country": "singapore",
+    "countryImage": "http://localhost:3333/images/country/singapore.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "SIN",
     "arrivalCountry": "싱가포르",
@@ -106,7 +114,8 @@
   {
     "id": 9,
     "airlineName": "Japan Airlines",
-    "airlineLogoUrl": "/images/japan-airlines-logo.png",
+    "country": "japan",
+    "countryImage": "http://localhost:3333/images/country/japan.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "NRT",
     "arrivalCountry": "일본",
@@ -119,7 +128,8 @@
   {
     "id": 10,
     "airlineName": "Thai Airways",
-    "airlineLogoUrl": "/images/thai-airways-logo.png",
+    "country": "thailand",
+    "countryImage": "http://localhost:3333/images/country/thailand.jpeg",
     "departureAirport": "ICN",
     "arrivalAirport": "BKK",
     "arrivalCountry": "태국",

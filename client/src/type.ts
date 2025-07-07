@@ -7,39 +7,42 @@ export type Caoursel = {
 export type Flight = {
   id: number;
   airlineName: string;
-  airlineLogoUrl: string;
-  departureAirport: string; // 출발 공항 코드
-  arrivalAirport: string; // 도착 공항 코드
-  arrivalCountry: string; // 도착 국가명
-  outboundDate: string; // 출국 날짜 (ISO 형식)
-  inboundDate: string; // 입국 날짜 (ISO 형식)
-  price: number; // 가격
-  currency: string; // 통화 단위
-  promotionTag: string; // 프로모션 태그 (ex: 특가, 한정)
+  country: string; // 예: "japan"
+  countryImage: string; // 국가 이미지 URL
+  departureAirport: string;
+  arrivalAirport: string;
+  arrivalCountry: string; // 사용자용 표기
+  outboundDate: string; // ISO date string
+  inboundDate: string; // ISO date string
+  price: number;
+  currency: string; // 예: "KRW"
+  promotionTag: string;
 };
 
 export type Hotel = {
   id: number;
   hotelName: string;
   hotelImageUrl: string;
-  location: string;
-  checkInDate: string; // ISO 날짜 문자열 (예: "2024-12-20")
-  checkOutDate: string; // ISO 날짜 문자열
-  pricePerNight: number; // 1박 가격
-  totalNights: number; // 총 숙박일수
-  totalPrice: number; // 총 가격
-  currency: string; // 통화 (예: "KRW")
-  promotionTag: string; // 프로모션 문구
+  location: string; // 예: "도쿄, 일본"
+  country: string; // 예: "japan"
+  checkInDate: string; // ISO date string
+  checkOutDate: string; // ISO date string
+  pricePerNight: number;
+  totalNights: number;
+  totalPrice: number;
+  currency: string;
+  promotionTag: string;
 };
 
 export type Activity = {
   id: number;
   activityName: string;
-  imageUrl: string;
-  location: string;
-  activityDate: string; // ISO 날짜 문자열, 예: "2024-09-15"
-  durationHours: number; // 소요 시간 (시간 단위)
+  location: string; // 예: "도쿄, 일본"
+  country: string; // 예: "japan"
+  activityDate: string; // ISO date string
+  durationHours: number; // 소수점 포함 가능 (e.g. 1.5)
   price: number;
-  currency: string; // 예: "KRW"
-  promotionTag: string; // 예: "특가", "조기예약 할인"
+  currency: string;
+  promotionTag: string;
+  imageUrl: string;
 };
