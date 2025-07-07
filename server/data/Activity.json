@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "activityName": "한강 자전거 투어",
+    "location": "서울, 대한민국",
+    "country": "south-korea",
+    "activityDate": "2024-09-15",
+    "durationHours": 3,
+    "price": 35000,
+    "currency": "KRW",
+    "promotionTag": "특가",
+    "imageUrl": "http://localhost:3333/images/activity/bike.jpeg"
+  },
+  {
+    "id": 2,
+    "activityName": "부산 해운대 서핑 레슨",
+    "location": "부산, 대한민국",
+    "country": "south-korea",
+    "activityDate": "2024-09-20",
+    "durationHours": 2,
+    "price": 45000,
+    "currency": "KRW",
+    "promotionTag": "신규 오픈",
+    "imageUrl": "http://localhost:3333/images/activity/surf.jpeg"
+  },
+  {
+    "id": 3,
+    "activityName": "방콕 전통 쿠킹 클래스",
+    "location": "방콕, 태국",
+    "country": "thailand",
+    "activityDate": "2024-10-05",
+    "durationHours": 4,
+    "price": 40000,
+    "currency": "KRW",
+    "promotionTag": "한정 할인",
+    "imageUrl": "http://localhost:3333/images/activity/cooking.jpeg"
+  },
+  {
+    "id": 4,
+    "activityName": "싱가포르 마리나 베이 산책 투어",
+    "location": "싱가포르",
+    "country": "singapore",
+    "activityDate": "2024-10-15",
+    "durationHours": 2,
+    "price": 30000,
+    "currency": "KRW",
+    "promotionTag": "특가",
+    "imageUrl": "http://localhost:3333/images/activity/walk.jpeg"
+  },
+  {
+    "id": 5,
+    "activityName": "도쿄 애니메이션 박물관 방문",
+    "location": "도쿄, 일본",
+    "country": "japan",
+    "activityDate": "2024-09-28",
+    "durationHours": 3,
+    "price": 25000,
+    "currency": "KRW",
+    "promotionTag": "추천",
+    "imageUrl": "http://localhost:3333/images/activity/animation.jpg"
+  },
+  {
+    "id": 6,
+    "activityName": "홍콩 빅토리아 피크 트램",
+    "location": "홍콩",
+    "country": "hong-kong",
+    "activityDate": "2024-11-05",
+    "durationHours": 1.5,
+    "price": 20000,
+    "currency": "KRW",
+    "promotionTag": "인기",
+    "imageUrl": "http://localhost:3333/images/activity/victoria-peak.jpeg"
+  },
+  {
+    "id": 7,
+    "activityName": "시드니 오페라 하우스 투어",
+    "location": "시드니, 호주",
+    "country": "australia",
+    "activityDate": "2024-12-10",
+    "durationHours": 2,
+    "price": 35000,
+    "currency": "KRW",
+    "promotionTag": "특가",
+    "imageUrl": "http://localhost:3333/images/activity/opera.jpeg"
+  },
+  {
+    "id": 8,
+    "activityName": "발리 요가 리트릿",
+    "location": "발리, 인도네시아",
+    "country": "indonesia",
+    "activityDate": "2024-11-20",
+    "durationHours": 5,
+    "price": 60000,
+    "currency": "KRW",
+    "promotionTag": "조기예약 할인",
+    "imageUrl": "http://localhost:3333/images/activity/yoga.jpeg"
+  },
+  {
+    "id": 9,
+    "activityName": "싱가포르 가든스 바이 더 베이 방문",
+    "location": "싱가포르",
+    "country": "singapore",
+    "activityDate": "2024-10-22",
+    "durationHours": 2,
+    "price": 28000,
+    "currency": "KRW",
+    "promotionTag": "특가",
+    "imageUrl": "http://localhost:3333/images/activity/garden-bay.jpeg"
+  },
+  {
+    "id": 10,
+    "activityName": "하와이 스노클링 투어",
+    "location": "호놀룰루, 미국",
+    "country": "usa",
+    "activityDate": "2024-12-15",
+    "durationHours": 4,
+    "price": 55000,
+    "currency": "KRW",
+    "promotionTag": "연말 특가",
+    "imageUrl": "http://localhost:3333/images/activity/snorkeling.jpeg"
+  }
+]

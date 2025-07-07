@@ -104,11 +104,11 @@ export default function Carousel() {
 
   return (
     <CarouselContainer>
-      <Icon
+      {/* <Icon
         src={"/public/left-arrow.png"}
         direction="left"
         // onClick={() => handleClickArrow("left")}
-      />
+      /> */}
       <CarouselWrapper>
         <CarouselBox
           translateX={33.33 * slideCount}
@@ -128,11 +128,11 @@ export default function Carousel() {
           })}
         </CarouselBox>
       </CarouselWrapper>
-      <Icon
+      {/* <Icon
         src={"/public/left-arrow.png"}
         direction="right"
         // onClick={() => handleClickArrow("right")}
-      />
+      /> */}
     </CarouselContainer>
   );
 }

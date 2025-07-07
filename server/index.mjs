@@ -48,6 +48,51 @@ const server = http.createServer(async (req, res) => {
         res.end(JSON.stringify({ error: "Failed to load carousel data" }));
       }
     }
+
+    // 항공편
+    if (pathname === "/flight") {
+      try {
+        const filePath = path.join(__dirname, "data", "Flight.json");
+        const content = await fs.readFile(filePath, "utf-8");
+        const flightData = JSON.parse(content);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(flightData));
+      } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Failed to load flight data" }));
+      }
+    }
+
+    // 호텔
+    if (pathname === "/hotel") {
+      try {
+        const filePath = path.join(__dirname, "data", "Hotel.json");
+        const content = await fs.readFile(filePath, "utf-8");
+        const hotelData = JSON.parse(content);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(hotelData));
+      } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Failed to load hotel data" }));
+      }
+    }
+
+    // 액티비티
+    if (pathname === "/activity") {
+      try {
+        const filePath = path.join(__dirname, "data", "Activity.json");
+        const content = await fs.readFile(filePath, "utf-8");
+        const activityData = JSON.parse(content);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(activityData));
+      } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Failed to load activity data" }));
+      }
+    }
   }
 });
 
