@@ -29,6 +29,7 @@ export const InfoBox = styled.div`
   flex-direction: column;
   gap: 6px;
   padding: 10px;
+  align-items: center;
 `;
 
 export const HotelName = styled.h3`

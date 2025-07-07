@@ -28,7 +28,7 @@ export default function FlightCard({ product }: Props) {
           출발: {product.outboundDate} / 도착: {product.inboundDate}
         </Dates>
         <Price>
-          {product.price.toLocaleString()} {product.currency}
+          {product.price && product.price.toLocaleString()} {product.currency}
         </Price>
         <PromotionTag>{product.promotionTag}</PromotionTag>
       </InfoBox>

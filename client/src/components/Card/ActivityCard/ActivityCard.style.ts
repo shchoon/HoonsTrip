@@ -30,6 +30,7 @@ export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
+  align-items: center;
 `;
 
 export const ActivityName = styled.h3`

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
+import FlightCard from "../../../components/Card/FlightCard/FlightCard";
+import HotelCard from "../../../components/Card/HotelCard/HotelCard";
+import ActivityCard from "../../../components/Card/ActivityCard/ActivityCard";
+import { useRouter } from "../../../hook/useRouter";
+
 import type { Flight, Hotel, Activity } from "../../../type";
-import FlightCard from "../../Card/FlightCard/FlightCard";
-import HotelCard from "../../Card/HotelCard/HotelCard";
-import ActivityCard from "../../Card/ActivityCard/ActivityCard";
 
 const ProductContainer = styled.div`
   width: 100%;
@@ -21,7 +23,7 @@ const ProductContent = styled.div`
 const CardContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
   gap: 10px;
 `;
 
@@ -44,6 +46,7 @@ type Props = {
   id: string;
   title: string;
   products: Flight[] | Hotel[] | Activity[];
+  loadMore?: boolean;
 };
 
 const CardComponent = (id: string, product: Flight | Hotel | Activity) => {
@@ -58,7 +61,13 @@ const CardComponent = (id: string, product: Flight | Hotel | Activity) => {
   }
 };
 
-export default function ProductSection({ id, title, products }: Props) {
+export default function ProductSection({
+  id,
+  title,
+  products,
+  loadMore = false,
+}: Props) {
+  const { router } = useRouter();
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
@@ -68,7 +77,14 @@ export default function ProductSection({ id, title, products }: Props) {
             return <>{CardComponent(id, product)}</>;
           })}
         </CardContainer>
-        <LoadMore src="/public/load-more.png" />
+        {loadMore && (
+          <LoadMore
+            onClick={() => {
+              router(`/${id}`);
+            }}
+            src="/public/load-more.png"
+          />
+        )}
       </ProductContent>
     </ProductContainer>
   );
