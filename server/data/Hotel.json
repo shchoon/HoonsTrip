@@ -86,7 +86,7 @@
   {
     "id": 7,
     "hotelName": "The Westin Sydney",
-    "hotelImageUrl": "http://localhost:3333/images/hotel/westin-sydney.jpeg",
+    "hotelImageUrl": "http://localhost:3333/images/hotel/westin-sydeny.jpeg",
     "location": "시드니, 호주",
     "country": "australia",
     "checkInDate": "2024-09-30",

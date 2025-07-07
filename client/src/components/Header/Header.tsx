@@ -87,9 +87,9 @@ export default function Header() {
         {/* 메뉴 */}
         <Nav>
           <NavLink to="/">홈</NavLink>
-          <NavLink to="/hotels">호텔</NavLink>
-          <NavLink to="/flights">항공권</NavLink>
-          <NavLink to="/packages">패키지</NavLink>
+          <NavLink to="/flight">항공권</NavLink>
+          <NavLink to="/hotel">호텔</NavLink>
+          <NavLink to="/activity">액티비티</NavLink>
           <NavLink to="/mypage">마이페이지</NavLink>
         </Nav>
 

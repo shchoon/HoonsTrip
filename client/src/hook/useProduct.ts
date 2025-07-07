@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { Flight, Hotel, Activity } from "../type";
+import type { Flight, Hotel, Activity, Status } from "../type";
 
 type ProductCategory<T> = {
   title: string;
@@ -34,9 +34,7 @@ const initialProduct: ProductState = {
 export const useProduct = () => {
   const [productState, setProductState] =
     useState<ProductState>(initialProduct);
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<Status>("idle");
 
   useEffect(() => {
     const fetchUrls = [

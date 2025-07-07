@@ -57,7 +57,7 @@
     "price": 25000,
     "currency": "KRW",
     "promotionTag": "추천",
-    "imageUrl": "http://localhost:3333/images/activity/animation.jpg"
+    "imageUrl": "http://localhost:3333/images/activity/animation.jpeg"
   },
   {
     "id": 6,

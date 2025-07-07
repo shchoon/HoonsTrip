@@ -46,3 +46,5 @@ export type Activity = {
   promotionTag: string;
   imageUrl: string;
 };
+
+export type Status = "idle" | "loading" | "success" | "error";

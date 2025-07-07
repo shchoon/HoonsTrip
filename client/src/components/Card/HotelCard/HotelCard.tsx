@@ -27,7 +27,8 @@ export default function HotelCard({ product }: Props) {
           체크아웃: {product.checkOutDate}
         </Date>
         <Price>
-          {product.totalPrice.toLocaleString()} {product.currency}
+          {product.totalPrice && product.totalPrice.toLocaleString()}{" "}
+          {product.currency}
         </Price>
         <PromotionTag>{product.promotionTag}</PromotionTag>
       </InfoBox>

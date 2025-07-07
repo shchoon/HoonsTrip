@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 import type { Caoursel } from "../../type";
 
+interface CarouselBoxProps {
+  translateX: number;
+  animation: boolean;
+}
+
 const CarouselContainer = styled.section`
   margin-top: 80px; /* 헤더 높이 만큼 여백 */
   width: 100%;
@@ -14,12 +19,13 @@ const CarouselContainer = styled.section`
 `;
 
 const CarouselWrapper = styled.div`
-  width: 90%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 `;
 
-const CarouselBox = styled.div<{ translateX: number; animation: boolean }>`
+const CarouselBox = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["translateX", "animation"].includes(prop),
+})<CarouselBoxProps>`
   width: 100%;
   display: flex;
   transform: translateX(${({ translateX }) => -translateX}%);
