@@ -9,7 +9,6 @@ interface CarouselBoxProps {
 }
 
 const CarouselContainer = styled.section`
-  margin-top: 80px; /* 헤더 높이 만큼 여백 */
   width: 100%;
   position: relative;
   background-color: #f9fafb;

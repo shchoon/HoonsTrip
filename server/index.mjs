@@ -34,10 +34,29 @@ const server = http.createServer(async (req, res) => {
 
     const files = await fs.readdir(path.join(__dirname, "data")); // data 폴더의 모든 파일 가져오기
     const jsonFiles = files.filter((file) => file.endsWith(".json")); // json 파일들만 가져오기
+    const country = searchParams.get("country");
+
+    if (pathname === "/") {
+      if (country) {
+        try {
+          const filePath = path.join(__dirname, "data", "CountryInfo.json");
+          const content = await fs.readFile(filePath, "utf-8");
+          const countryInfo = JSON.parse(content);
+
+          const data = countryInfo.find((info) => info.country === country);
+
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(data ?? {}));
+        } catch (error) {
+          res.writeHead(500, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "Failed to load country data" }));
+        }
+      }
+    }
 
     if (pathname === "/carousel") {
       try {
-        const filePath = path.join(__dirname, "data", "carousel.json");
+        const filePath = path.join(__dirname, "data", "Carousel.json");
         const content = await fs.readFile(filePath, "utf-8");
         const carouselData = JSON.parse(content);
 

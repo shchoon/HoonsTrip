@@ -49,13 +49,21 @@ type Props = {
   loadMore?: boolean;
 };
 
-const CardComponent = (id: string, product: Flight | Hotel | Activity) => {
+const CardComponent = (
+  id: string,
+  product: Flight | Hotel | Activity,
+  router: ReturnType<typeof useRouter>["router"]
+) => {
+  const handleClick = () => {
+    router(`/${id}/detail?id=${product.id}`);
+  };
+
   if (id === "flight") {
-    return <FlightCard product={product as Flight} />;
+    return <FlightCard product={product as Flight} onClick={handleClick} />;
   } else if (id === "hotel") {
-    return <HotelCard product={product as Hotel} />;
+    return <HotelCard product={product as Hotel} onClick={handleClick} />;
   } else if (id === "activity") {
-    return <ActivityCard product={product as Activity} />;
+    return <ActivityCard product={product as Activity} onClick={handleClick} />;
   } else {
     return null;
   }
@@ -74,7 +82,7 @@ export default function ProductSection({
       <ProductContent>
         <CardContainer>
           {products.map((product) => {
-            return <>{CardComponent(id, product)}</>;
+            return <>{CardComponent(id, product, router)}</>;
           })}
         </CardContainer>
         {loadMore && (

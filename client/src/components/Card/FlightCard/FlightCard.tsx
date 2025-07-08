@@ -13,11 +13,12 @@ import type { Flight } from "../../../type";
 
 type Props = {
   product: Flight;
+  onClick: () => void;
 };
 
-export default function FlightCard({ product }: Props) {
+export default function FlightCard({ product, onClick }: Props) {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <CountryImage src={product.countryImage} alt={product.arrivalCountry} />
       <AirlineName>{product.airlineName}</AirlineName>
       <InfoBox>
