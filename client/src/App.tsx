@@ -25,7 +25,7 @@ function App() {
     locataion.pathname === "/" ||
     /^\/(flight|hotel|activity)$/.test(location.pathname);
   useEffect(() => {
-    fetch("http://localhost:3333/?country=japan").then((res) =>
+    fetch("http://localhost:3333/flight?flight=1").then((res) =>
       console.log(res)
     );
   }, []);
@@ -37,7 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Page />} />
-          <Route path=":id/detail" element={<DetailPage />} />{" "}
+          <Route path=":id/detail" element={<DetailPage />} />
           <Route path="/test" element={<Test />} />
           {/* 중첩 라우트 */}
         </Routes>

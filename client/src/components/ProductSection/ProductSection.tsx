@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-import FlightCard from "../../../components/Card/FlightCard/FlightCard";
-import HotelCard from "../../../components/Card/HotelCard/HotelCard";
-import ActivityCard from "../../../components/Card/ActivityCard/ActivityCard";
-import { useRouter } from "../../../hook/useRouter";
+import FlightCard from "../Card/FlightCard/FlightCard";
+import HotelCard from "../Card/HotelCard/HotelCard";
+import ActivityCard from "../Card/ActivityCard/ActivityCard";
+import { useRouter } from "../../hook/useRouter";
 
-import type { Flight, Hotel, Activity } from "../../../type";
+import type { Flight, Hotel, Activity } from "../../type";
 
 const ProductContainer = styled.div`
   width: 100%;

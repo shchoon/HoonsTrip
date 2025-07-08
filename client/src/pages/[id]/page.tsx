@@ -1,5 +1,5 @@
 import { usePageData } from "../../hook/usePageData";
-import ProductSection from "../Home/_components/ProductSection";
+import ProductSection from "../../components/ProductSection/ProductSection";
 
 export default function Page() {
   const { id, isValidId, data, status, title } = usePageData();

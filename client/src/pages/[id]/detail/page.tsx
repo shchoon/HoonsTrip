@@ -1,29 +1,27 @@
 import styled from "styled-components";
-import ProductSection from "../../Home/_components/ProductSection";
+import { useParams } from "react-router-dom";
 
-import type { Flight, Hotel, Activity } from "../../../type";
-
-type Props = {
-  flight: Flight;
-  hotels: Hotel[];
-  activities: Activity[];
-};
-
-export default function FlightDetailPage({
-  flight,
-  hotels,
-  activities,
-}: Props) {
+export default function DetailPage() {
+  const { id } = useParams();
+  console.log(id);
   return (
     <Wrapper>
-      <ImageWrapper>
+      {/* <ImageSection>
         <CountryImage src={flight.countryImage} alt={flight.arrivalCountry} />
-        <Overlay>
-          <CountryName>{flight.arrivalCountry}</CountryName>
-        </Overlay>
-      </ImageWrapper>
+        <CountryNameOverlay>{flight.arrivalCountry}</CountryNameOverlay>
+      </ImageSection>
 
-      <FlightCard>
+      <InfoSection>
+        <SubTitle>여행지 정보</SubTitle>
+        <InfoList>
+          <li>날씨: 맑음, 28°C</li>
+          <li>시차: 한국보다 0시간 느림</li>
+          <li>통화: {flight.currency}</li>
+          <li>언어: 일본어</li>
+        </InfoList>
+      </InfoSection>
+
+      <BookingSection>
         <Airline>{flight.airlineName}</Airline>
         <Route>
           {flight.departureAirport} → {flight.arrivalAirport}
@@ -33,36 +31,36 @@ export default function FlightDetailPage({
           <br />
           귀국일: {flight.inboundDate}
         </Dates>
-        <PriceBox>
-          <Price>
-            {flight.price.toLocaleString()} {flight.currency}
-          </Price>
-          <Tag>{flight.promotionTag}</Tag>
-        </PriceBox>
-        <CTAButton>항공권 예약하기</CTAButton>
-      </FlightCard>
-
-      <ProductSection id="hotel" title="🛏 추천 호텔" products={hotels} />
-      <ProductSection
-        id="activity"
-        title="🎯 인기 액티비티"
-        products={activities}
-      />
+        <Price>
+          {flight.price.toLocaleString()} {flight.currency}{" "}
+          <PromotionTag>{flight.promotionTag}</PromotionTag>
+        </Price>
+        <BookButton>예약하기</BookButton>
+      </BookingSection> */}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+
+  display: flex;
+  gap: 40px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 30px;
+  }
 `;
 
-const ImageWrapper = styled.div`
+const ImageSection = styled.div`
+  flex: 1.5;
   position: relative;
-  height: 260px;
-  overflow: hidden;
   border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 `;
 
 const CountryImage = styled.img`
@@ -71,77 +69,108 @@ const CountryImage = styled.img`
   object-fit: cover;
 `;
 
-const Overlay = styled.div`
+const CountryNameOverlay = styled.div`
   position: absolute;
   bottom: 0;
-  width: 100%;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  left: 0;
+  right: 0;
+  padding: 18px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  font-weight: 700;
+  font-size: 26px;
 `;
 
-const CountryName = styled.h2`
-  color: #fff;
-  font-size: 28px;
-  margin: 0;
-`;
-
-const FlightCard = styled.div`
-  background-color: white;
-  margin-top: 20px;
-  padding: 24px;
+const InfoSection = styled.div`
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 24px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 8px #eee;
+
+  display: flex;
+  flex-direction: column;
 `;
 
-const Airline = styled.h3`
+const SubTitle = styled.h3`
+  margin: 0 0 18px;
   font-size: 22px;
-  margin: 0 0 12px 0;
+  font-weight: 700;
+  color: #444;
+`;
+
+const InfoList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  flex-grow: 1;
+
+  li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+`;
+
+const BookingSection = styled.div`
+  flex: 1;
+  background: white;
+  padding: 24px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const Airline = styled.h2`
+  margin: 0 0 12px;
+  font-size: 26px;
+  color: #222;
 `;
 
 const Route = styled.p`
+  margin: 0 0 14px;
   font-size: 18px;
-  color: #333;
-  margin: 0 0 10px 0;
+  color: #555;
 `;
 
 const Dates = styled.p`
-  color: #555;
-  margin: 0 0 16px 0;
-  line-height: 1.5;
+  margin: 0 0 24px;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.4;
 `;
 
-const PriceBox = styled.div`
+const Price = styled.p`
+  font-size: 22px;
+  font-weight: 700;
+  color: #e60023;
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 12px;
 `;
 
-const Price = styled.span`
-  font-size: 20px;
-  font-weight: bold;
-  color: #e60023;
-`;
-
-const Tag = styled.span`
-  font-size: 13px;
+const PromotionTag = styled.span`
   background-color: #ffe600;
-  color: #000;
-  padding: 4px 8px;
-  border-radius: 4px;
+  color: black;
+  padding: 4px 10px;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 14px;
 `;
 
-const CTAButton = styled.button`
-  width: 100%;
-  padding: 14px 0;
+const BookButton = styled.button`
+  padding: 15px 0;
   background-color: #ff5722;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background-color 0.25s ease;
 
   &:hover {
     background-color: #e64a19;

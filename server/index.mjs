@@ -35,6 +35,7 @@ const server = http.createServer(async (req, res) => {
     const files = await fs.readdir(path.join(__dirname, "data")); // data 폴더의 모든 파일 가져오기
     const jsonFiles = files.filter((file) => file.endsWith(".json")); // json 파일들만 가져오기
     const country = searchParams.get("country");
+    const flightId = searchParams.get("flight");
 
     if (pathname === "/") {
       if (country) {
@@ -43,10 +44,10 @@ const server = http.createServer(async (req, res) => {
           const content = await fs.readFile(filePath, "utf-8");
           const countryInfo = JSON.parse(content);
 
-          const data = countryInfo.find((info) => info.country === country);
+          const result = countryInfo.find((info) => info.country === country);
 
           res.writeHead(200, { "Content-Type": "application/json" });
-          res.end(JSON.stringify(data ?? {}));
+          res.end(JSON.stringify(result ?? {}));
         } catch (error) {
           res.writeHead(500, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ error: "Failed to load country data" }));
@@ -74,9 +75,15 @@ const server = http.createServer(async (req, res) => {
         const filePath = path.join(__dirname, "data", "Flight.json");
         const content = await fs.readFile(filePath, "utf-8");
         const flightData = JSON.parse(content);
+        let result;
+        if (flightId) {
+          result = flightData.find((data) => data.id === Number(flightId));
+        } else {
+          result = flightData;
+        }
 
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(flightData));
+        res.end(JSON.stringify(result));
       } catch (error) {
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Failed to load flight data" }));

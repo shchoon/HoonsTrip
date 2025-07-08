@@ -1,4 +1,4 @@
-import ProductSection from "./_components/ProductSection";
+import ProductSection from "../../components/ProductSection/ProductSection";
 
 import { useProduct } from "../../hook/useProduct";
 
