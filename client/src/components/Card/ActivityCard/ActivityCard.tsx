@@ -7,17 +7,19 @@ import {
   Duration,
   Price,
   PromotionTag,
+  Date,
 } from "./ActivityCard.style";
 
 import type { Activity } from "../../../type";
 
 type Props = {
   product: Activity;
+  onClick: () => void;
 };
 
-export default function ActivityCard({ product }: Props) {
+export default function ActivityCard({ product, onClick }: Props) {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <ActivityImage src={product.imageUrl} alt={product.activityName} />
       <InfoBox>
         <ActivityName>{product.activityName}</ActivityName>

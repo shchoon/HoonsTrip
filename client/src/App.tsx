@@ -6,8 +6,8 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Carousel from "./components/Carousel/Carousel";
 import Home from "./pages/Home/Home";
-import Page from "./pages/[id]/page";
-import DetailPage from "./pages/[id]/detail/page";
+import Page from "./pages/[category]/page";
+import DetailPage from "./pages/[category]/detail/page";
 import Test from "./pages/Test";
 
 const MainContainer = styled.div`
@@ -36,8 +36,8 @@ function App() {
         {isShowModal && <Carousel />}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<Page />} />
-          <Route path=":id/detail" element={<DetailPage />} />
+          <Route path="/:category" element={<Page />} />
+          <Route path=":category/detail" element={<DetailPage />} />
           <Route path="/test" element={<Test />} />
           {/* 중첩 라우트 */}
         </Routes>

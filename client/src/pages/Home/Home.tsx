@@ -10,9 +10,10 @@ export default function Home() {
   return (
     <>
       {Object.values(productState).map((product) => {
+        console.log(product);
         return (
           <ProductSection
-            id={product.id}
+            category={product.id}
             title={product.title}
             products={product.products}
             loadMore={true}

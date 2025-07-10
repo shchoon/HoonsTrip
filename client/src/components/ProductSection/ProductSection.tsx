@@ -43,26 +43,27 @@ const LoadMore = styled.img`
 `;
 
 type Props = {
-  id: string;
+  category: string;
   title: string;
   products: Flight[] | Hotel[] | Activity[];
   loadMore?: boolean;
 };
 
 const CardComponent = (
-  id: string,
+  category: string,
   product: Flight | Hotel | Activity,
   router: ReturnType<typeof useRouter>["router"]
 ) => {
   const handleClick = () => {
-    router(`/${id}/detail?id=${product.id}`);
+    router(`/${category}/detail?id=${product.id}`);
   };
 
-  if (id === "flight") {
+  if (category === "flight") {
     return <FlightCard product={product as Flight} onClick={handleClick} />;
-  } else if (id === "hotel") {
+  }
+  if (category === "hotel") {
     return <HotelCard product={product as Hotel} onClick={handleClick} />;
-  } else if (id === "activity") {
+  } else if (category === "activity") {
     return <ActivityCard product={product as Activity} onClick={handleClick} />;
   } else {
     return null;
@@ -70,7 +71,7 @@ const CardComponent = (
 };
 
 export default function ProductSection({
-  id,
+  category,
   title,
   products,
   loadMore = false,
@@ -82,13 +83,13 @@ export default function ProductSection({
       <ProductContent>
         <CardContainer>
           {products.map((product) => {
-            return <>{CardComponent(id, product, router)}</>;
+            return <>{CardComponent(category, product, router)}</>;
           })}
         </CardContainer>
         {loadMore && (
           <LoadMore
             onClick={() => {
-              router(`/${id}`);
+              router(`/${category}`);
             }}
             src="/public/load-more.png"
           />

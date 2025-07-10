@@ -4,11 +4,15 @@ import { useParams } from "react-router-dom";
 import type { Flight, Hotel, Activity, Status } from "../type";
 
 export const usePageData = () => {
-  const { id } = useParams();
+  const { category } = useParams();
 
   //   isValidId가 true이면 id의 값을 'flight' | 'hotel' | 'activity' 중 하나라고 확정(type guard)
-  const isValidId = (id: unknown): id is "flight" | "hotel" | "activity" => {
-    return id === "flight" || id === "hotel" || id === "activity";
+  const isValidcategory = (
+    category: unknown
+  ): category is "flight" | "hotel" | "activity" => {
+    return (
+      category === "flight" || category === "hotel" || category === "activity"
+    );
   };
 
   const [data, setData] = useState<Flight[] | Hotel[] | Activity[]>([]);
@@ -24,7 +28,7 @@ export const usePageData = () => {
     const getData = async () => {
       setStatus("loading");
       try {
-        const res = await fetch(`http://localhost:3333/${id}`);
+        const res = await fetch(`http://localhost:3333/${category}`);
         const data = await res.json();
 
         setData(data);
@@ -40,7 +44,7 @@ export const usePageData = () => {
       setData([]);
       setStatus("idle");
     };
-  }, [id]);
+  }, [category]);
 
-  return { data, id, isValidId, status, title };
+  return { data, category, isValidcategory, status, title };
 };

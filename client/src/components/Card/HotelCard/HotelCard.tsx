@@ -6,17 +6,19 @@ import {
   Location,
   Price,
   PromotionTag,
+  Date,
 } from "./HotalCard.style";
 
 import type { Hotel } from "../../../type";
 
 type Props = {
   product: Hotel;
+  onClick: () => void;
 };
 
-export default function HotelCard({ product }: Props) {
+export default function HotelCard({ product, onClick }: Props) {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <HotelImage src={product.hotelImageUrl} alt={product.hotelName} />
       <InfoBox>
         <HotelName>{product.hotelName}</HotelName>

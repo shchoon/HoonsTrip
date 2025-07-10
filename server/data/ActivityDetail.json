@@ -1,0 +1,186 @@
+[
+  {
+    "id": 1,
+    "duration": "3시간",
+    "languages": ["일본어", "영어"],
+    "minParticipants": 1,
+    "includes": ["조리 도구 제공", "셰프 시연"],
+    "rating": 4.9
+  },
+  {
+    "id": 2,
+    "duration": "2시간",
+    "languages": ["일본어", "영어"],
+    "minParticipants": 2,
+    "includes": ["다기 세트 제공", "전통 복장 체험"],
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "duration": "4시간",
+    "languages": ["일본어", "영어"],
+    "minParticipants": 2,
+    "includes": ["현지 가이드", "길거리 음식 시식"],
+    "rating": 4.7
+  },
+  {
+    "id": 4,
+    "duration": "2시간",
+    "languages": ["광둥어", "영어"],
+    "minParticipants": 1,
+    "includes": ["트램 티켓", "야경 촬영 가이드"],
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "duration": "2시간",
+    "languages": ["광둥어", "영어"],
+    "minParticipants": 1,
+    "includes": ["현지 가이드", "역사 안내책자"],
+    "rating": 4.5
+  },
+  {
+    "id": 6,
+    "duration": "1시간 30분",
+    "languages": ["영어"],
+    "minParticipants": 2,
+    "includes": ["크루즈 탑승권", "음료 제공"],
+    "rating": 4.7
+  },
+  {
+    "id": 7,
+    "duration": "3시간 30분",
+    "languages": ["태국어", "영어"],
+    "minParticipants": 2,
+    "includes": ["보트 탑승", "시장 투어"],
+    "rating": 4.6
+  },
+  {
+    "id": 8,
+    "duration": "6시간",
+    "languages": ["태국어", "영어"],
+    "minParticipants": 1,
+    "includes": ["입장료", "코끼리 먹이 제공"],
+    "rating": 4.9
+  },
+  {
+    "id": 9,
+    "duration": "2시간",
+    "languages": ["태국어", "영어"],
+    "minParticipants": 2,
+    "includes": ["요가 매트 제공", "강사 지도"],
+    "rating": 4.6
+  },
+  {
+    "id": 10,
+    "duration": "2시간 30분",
+    "languages": ["영어"],
+    "minParticipants": 1,
+    "includes": ["입장권", "정원 가이드북"],
+    "rating": 4.7
+  },
+  {
+    "id": 11,
+    "duration": "4시간",
+    "languages": ["영어"],
+    "minParticipants": 2,
+    "includes": ["어트랙션 이용권", "음료 제공"],
+    "rating": 4.6
+  },
+  {
+    "id": 12,
+    "duration": "2시간",
+    "languages": ["영어"],
+    "minParticipants": 1,
+    "includes": ["산책 가이드", "사진 촬영"],
+    "rating": 4.5
+  },
+  {
+    "id": 13,
+    "duration": "3시간",
+    "languages": ["베트남어", "영어"],
+    "minParticipants": 2,
+    "includes": ["자전거 대여", "헬멧 제공"],
+    "rating": 4.7
+  },
+  {
+    "id": 14,
+    "duration": "2시간",
+    "languages": ["베트남어", "영어"],
+    "minParticipants": 1,
+    "includes": ["입장권", "해설 가이드"],
+    "rating": 4.5
+  },
+  {
+    "id": 15,
+    "duration": "5시간",
+    "languages": ["베트남어", "영어"],
+    "minParticipants": 2,
+    "includes": ["크루즈 탑승", "점심 포함"],
+    "rating": 4.9
+  },
+  {
+    "id": 16,
+    "duration": "2시간",
+    "languages": ["말레이어", "영어"],
+    "minParticipants": 2,
+    "includes": ["교통 제공", "가이드 동반"],
+    "rating": 4.6
+  },
+  {
+    "id": 17,
+    "duration": "3시간",
+    "languages": ["말레이어", "영어"],
+    "minParticipants": 2,
+    "includes": ["역사적 장소 방문", "기념품 제공"],
+    "rating": 4.5
+  },
+  {
+    "id": 18,
+    "duration": "2시간 30분",
+    "languages": ["영어"],
+    "minParticipants": 1,
+    "includes": ["카약 대여", "안전 장비"],
+    "rating": 4.7
+  },
+  {
+    "id": 19,
+    "duration": "2시간",
+    "languages": ["일본어", "영어"],
+    "minParticipants": 1,
+    "includes": ["숲길 산책", "사진 촬영"],
+    "rating": 4.6
+  },
+  {
+    "id": 20,
+    "duration": "2시간 30분",
+    "languages": ["일본어", "영어"],
+    "minParticipants": 2,
+    "includes": ["패션 가이드", "기념 사진"],
+    "rating": 4.7
+  },
+  {
+    "id": 21,
+    "duration": "3시간",
+    "languages": ["광둥어", "영어"],
+    "minParticipants": 1,
+    "includes": ["야시장 음식 체험", "가이드 동반"],
+    "rating": 4.6
+  },
+  {
+    "id": 22,
+    "duration": "3시간 30분",
+    "languages": ["태국어", "영어"],
+    "minParticipants": 2,
+    "includes": ["입장권", "문화 해설"],
+    "rating": 4.8
+  },
+  {
+    "id": 23,
+    "duration": "2시간",
+    "languages": ["영어"],
+    "minParticipants": 2,
+    "includes": ["보트 탑승권", "야경 관람"],
+    "rating": 4.7
+  }
+]
