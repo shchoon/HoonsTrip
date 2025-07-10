@@ -7,7 +7,7 @@ export const usePageData = () => {
   const { category } = useParams();
 
   //   isValidId가 true이면 id의 값을 'flight' | 'hotel' | 'activity' 중 하나라고 확정(type guard)
-  const isValidcategory = (
+  const isValidCategory = (
     category: unknown
   ): category is "flight" | "hotel" | "activity" => {
     return (
@@ -46,5 +46,5 @@ export const usePageData = () => {
     };
   }, [category]);
 
-  return { data, category, isValidcategory, status, title };
+  return { data, category, isValidcategory: isValidCategory, status, title };
 };

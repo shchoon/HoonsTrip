@@ -8,21 +8,7 @@ import ImageCard from "../../../components/Detail/ImageCard/ImageCard";
 import DetailCard from "../../../components/Detail/DetailCard/DetailCard";
 import BookingCard from "../../../components/Detail/BookingCard/BookingCard";
 
-import type {
-  Flight,
-  CountryInfo,
-  Hotel,
-  Activity,
-  Category,
-} from "../../../type";
-
-// type RecoDataTitle = '추천 항공편' | '추천 호텔' | '추천 액티비티'
-
-type RecoDataMap = {
-  flight: { hotel: Hotel[]; activity: Activity[] };
-  hotel: { flight: Flight[]; activity: Activity[] };
-  activity: { flight: Flight[]; hotel: Hotel[] };
-};
+import type { Flight, Hotel, Activity, Category } from "../../../type";
 
 type RecoDataType = {
   title: string;
@@ -30,18 +16,14 @@ type RecoDataType = {
   data: Flight[] | Hotel[] | Activity[];
 }[];
 
-type RecoReqUrlType = {
-  [K in Category]: Record<Exclude<Category, K>, string>;
-};
-
 export default function DetailPage() {
   const { category } = useParams();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
 
-  const [detailDataState, setDetailDataState] = useState<{
-    data: Flight | null;
-    detail: CountryInfo | null;
+  const [pageDataState, setPageDataState] = useState<{
+    data: any;
+    detail: any;
   }>({
     data: null,
     detail: null,
@@ -49,101 +31,120 @@ export default function DetailPage() {
 
   const [recoDataState, setRecoDataState] = useState<RecoDataType | null>(null);
 
-  const recoReqUrl: RecoReqUrlType = {
-    flight: {
-      hotel: "/hotel",
-      activity: "/activity",
-    },
-    hotel: {
-      flight: "/flight",
-      activity: "/activity",
-    },
-    activity: {
-      flight: "/flight",
-      hotel: "/hotel",
-    },
-  };
-
-  const getDetailData = async (category: Category, country: string) => {
-    let detail;
-    if (category === "flight") {
-      detail = await apiClient(`/?country=${country}`);
-    } else if (category === "hotel") {
-      detail = await apiClient(`/?hotel=${id}`);
-    } else if (category === "activity") {
-      detail = await apiClient(`/?activity=${id}`);
-    }
-
-    return detail;
-  };
-
-  // const inferRecoDataType = <C extends keyof RecoDataMap>(
-  //   category: C,
-  //   data: unknown
-  // ): data is RecoDataMap[C] => {
-  //   return true;
-  // };
-
-  const getRocoDataTitle = (category: Category) => {
-    if (category === "flight") {
-      return "추천 항공편";
-    } else if (category === "hotel") {
-      return "추천 호텔";
-    } else {
-      return "추천 액티비티";
+  const fetchCategoryDataByID = async (category: Category, id: string) => {
+    switch (category) {
+      case "flight":
+        return await apiClient("/flight?flight=" + id);
+      case "hotel":
+        return await apiClient("/hotel?hotel=" + id);
+      case "activity":
+        return await apiClient("/activity?activity=" + id);
+      // 새로운 카테고리가 추가되면 추가로 데이터 패칭 함수 작성
     }
   };
 
-  const getRecoData = async (category: Category, country: string) => {
-    const urls = recoReqUrl[category];
+  const fetchDetailData = async (
+    category: Category,
+    country?: string,
+    id?: string
+  ) => {
+    console.log(country, id);
+    switch (category) {
+      case "flight":
+        if (!country) throw new Error("country가 필요합니다.");
+        return await apiClient(`/?country=${country}`);
 
-    const entries = await Promise.all(
-      (Object.entries(urls) as [Category, string][]).map(async ([key, url]) => {
-        let data: Flight[] | Hotel[] | Activity[];
+      case "hotel":
+        if (!id) throw new Error("id가 필요합니다.");
+        return await apiClient(`/?hotel=${id}`);
 
-        if (key === "flight") {
-          data = (await apiClient(url)) as Flight[];
-        } else if (key === "hotel") {
-          data = (await apiClient(url)) as Hotel[];
-        } else {
-          data = (await apiClient(url)) as Activity[];
-        }
+      case "activity":
+        if (!id) throw new Error("id가 필요합니다.");
+        return await apiClient(`/?activity=${id}`);
 
-        const recoData = data.filter((el) => el.country === country);
+      // 새로운 카테고리 추가시 case 추가
+    }
+  };
 
-        return {
-          title: getRocoDataTitle(key),
-          category: key,
-          data: recoData,
-        };
-      })
+  const fetchCategoryData = async (category: Category) => {
+    switch (category) {
+      case "flight":
+        return await apiClient("/flight");
+      case "hotel":
+        return await apiClient("/hotel");
+      case "activity":
+        return await apiClient("/activity");
+
+      // 새로운 카테고리 추가시 case 추가
+    }
+  };
+
+  const recoDataTitleMap: Record<Category, string> = {
+    flight: "추천 항공편",
+    hotel: "추천 호텔",
+    activity: "추천 액티비티",
+  };
+
+  const fetchRecoData = async (curCategory: Category, country: string) => {
+    const allCategory: Category[] = ["flight", "hotel", "activity"]; // 새로운 카테고리 추가시 배열에 추가
+
+    const result = await Promise.all(
+      allCategory
+        .filter((category) => category !== curCategory)
+        .map(async (category) => {
+          const data = await fetchCategoryData(category);
+          return {
+            category: category,
+            title: recoDataTitleMap[category],
+            data: data.filter((el) => el.country === country),
+          };
+        })
     );
 
-    // 타입 단언으로 해결
-    setRecoDataState(entries as RecoDataType);
+    console.log(result);
+    return result;
+  };
+
+  const isValidCategory = (
+    category: string | undefined
+  ): category is Category => {
+    return ["flight", "hotel", "activity"].includes(category as Category);
+    // category가 추가되면 배열에 카테고리 추가해서 유효한 카테고리인지 타입 추론
+  };
+
+  const isValidId = (id: null | string): id is string => {
+    return typeof id === "string";
   };
 
   useEffect(() => {
+    if (!isValidCategory(category) || !isValidId(id)) return;
+
     const getData = async () => {
-      const data = await apiClient(`/${category}?${category}=${id}`);
+      const data = await fetchCategoryDataByID(category, id);
       const country = await data.country;
-      const detail = await getDetailData(category as Category, country);
+      const detail =
+        category === "flight"
+          ? await fetchDetailData(category, country)
+          : await fetchDetailData(category, undefined, id);
 
-      await getRecoData(category as Category, country);
-
-      setDetailDataState((prev) => ({
+      const recoData = await fetchRecoData(category, country);
+      console.log(recoData);
+      setPageDataState((prev) => ({
         ...prev,
         data: data,
         detail: detail,
       }));
+
+      setRecoDataState(recoData);
     };
 
     getData();
   }, [category, id]);
 
-  const { data, detail } = detailDataState;
+  const { data, detail } = pageDataState;
   if (!data || !detail || !recoDataState) return;
 
+  console.log(pageDataState, recoDataState);
   return (
     <>
       <Wrapper>
