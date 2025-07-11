@@ -48,3 +48,34 @@ export type Activity = {
 };
 
 export type Status = "idle" | "loading" | "success" | "error";
+
+export type Category = "flight" | "hotel" | "activity";
+
+export type CountryInfo = {
+  country: string;
+  recommendedFood: string;
+  visaRequired: string;
+  language: string;
+  timezoneDifference: string;
+  currency: string;
+  recommendedAttractions: string[];
+};
+
+export type HotelDetail = {
+  id: number;
+  rating: number; // 호텔 등급 (1~5)
+  breakfastIncluded: boolean;
+  amenities: string[]; // 편의시설
+  airportShuttle: boolean;
+  nearbyRestaurants: string[]; // 주변 맛집
+  customerRating: number; // 고객 평점 (1~5)
+};
+
+export type ActivityDetail = {
+  id: number;
+  duration: string; // 예: "2시간"
+  languages: string[]; // 사용 가능한 언어
+  minParticipants: number; // 최소 인원
+  includes: string[]; // 포함 사항
+  rating: number; // 평점 (0.0 ~ 5.0)
+};
