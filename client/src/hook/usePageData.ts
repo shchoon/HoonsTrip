@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 
 import fetchCategoryData from "../api/fetch/fetchCategoryData";
 import { isValidCategory } from "../utils/inferType";
-import type { Flight, Hotel, Activity, Status } from "../type";
-
-type FetchMap = {
-  flight: Flight[];
-  hotel: Hotel[];
-  activity: Activity[];
-};
+import type {
+  Flight,
+  Hotel,
+  Activity,
+  Status,
+  FetchCategoryMap,
+} from "../type";
 
 export const usePageData = () => {
   const { category } = useParams();
@@ -31,9 +31,9 @@ export const usePageData = () => {
     const getData = async () => {
       setStatus("loading");
       try {
-        const categoryData = await fetchCategoryData<FetchMap[typeof category]>(
-          category
-        );
+        const categoryData = await fetchCategoryData<
+          FetchCategoryMap[typeof category]
+        >(category);
         setData(categoryData);
         setStatus("success");
       } catch (err) {

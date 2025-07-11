@@ -6,3 +6,7 @@ export const isValidCategory = (
   return ["flight", "hotel", "activity"].includes(category as Category);
   // category가 추가되면 배열에 카테고리 추가해서 유효한 카테고리인지 타입 추론
 };
+
+export const isValidId = (id: null | string): id is string => {
+  return typeof id === "string";
+};

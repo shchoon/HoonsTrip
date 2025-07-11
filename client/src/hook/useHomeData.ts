@@ -2,7 +2,14 @@ import { useState, useEffect } from "react";
 
 import fetchCategoryData from "../api/fetch/fetchCategoryData";
 
-import type { Flight, Hotel, Activity, Status, Category } from "../type";
+import type {
+  Flight,
+  Hotel,
+  Activity,
+  Status,
+  Category,
+  FetchCategoryMap,
+} from "../type";
 
 type ProductCategory<T> = {
   title: string;
@@ -15,12 +22,6 @@ type ProductState = [
   ProductCategory<Hotel>,
   ProductCategory<Activity>
 ];
-
-type FetchMap = {
-  flight: Flight[];
-  hotel: Hotel[];
-  activity: Activity[];
-};
 
 const categoryTitleMap: Record<Category, string> = {
   flight: "추천 항공편",
@@ -39,9 +40,9 @@ export const useHomeData = () => {
       try {
         const homeData = await Promise.all(
           categories.map(async (category) => {
-            const data = await fetchCategoryData<FetchMap[typeof category]>(
-              category
-            );
+            const data = await fetchCategoryData<
+              FetchCategoryMap[typeof category]
+            >(category);
             return {
               title: categoryTitleMap[category],
               id: category,
