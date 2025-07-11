@@ -1,15 +1,15 @@
 import ProductSection from "../../components/ProductSection/ProductSection";
 
-import { useProduct } from "../../hook/useProduct";
+import { useHomeData } from "../../hook/useHomeData";
 
 export default function Home() {
-  const { productState, status } = useProduct();
+  const { productState, status } = useHomeData();
 
-  if (status !== "success") return;
+  if (status !== "success" || !productState) return;
 
   return (
     <>
-      {Object.values(productState).map((product) => {
+      {productState.map((product) => {
         console.log(product);
         return (
           <ProductSection

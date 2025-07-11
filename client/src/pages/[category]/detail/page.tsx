@@ -7,6 +7,7 @@ import { apiClient } from "../../../api/apiClient";
 import ImageCard from "../../../components/Detail/ImageCard/ImageCard";
 import DetailCard from "../../../components/Detail/DetailCard/DetailCard";
 import BookingCard from "../../../components/Detail/BookingCard/BookingCard";
+import fetchCategoryData from "../../../api/fetch/fetchCategoryData";
 
 import type { Flight, Hotel, Activity, Category } from "../../../type";
 
@@ -61,19 +62,6 @@ export default function DetailPage() {
       case "activity":
         if (!id) throw new Error("id가 필요합니다.");
         return await apiClient(`/?activity=${id}`);
-
-      // 새로운 카테고리 추가시 case 추가
-    }
-  };
-
-  const fetchCategoryData = async (category: Category) => {
-    switch (category) {
-      case "flight":
-        return await apiClient("/flight");
-      case "hotel":
-        return await apiClient("/hotel");
-      case "activity":
-        return await apiClient("/activity");
 
       // 새로운 카테고리 추가시 case 추가
     }
