@@ -16,6 +16,12 @@ type ProductState = [
   ProductCategory<Activity>
 ];
 
+type FetchMap = {
+  flight: Flight[];
+  hotel: Hotel[];
+  activity: Activity[];
+};
+
 const categoryTitleMap: Record<Category, string> = {
   flight: "추천 항공편",
   hotel: "추천 호텔",
@@ -27,34 +33,24 @@ export const useHomeData = () => {
   const [status, setStatus] = useState<Status>("idle");
 
   useEffect(() => {
+    const categories = ["flight", "hotel", "activity"] as const;
     const getData = async () => {
       setStatus("loading");
       try {
-        const [flight, hotel, activity] = await Promise.all([
-          await fetchCategoryData<Flight[]>("flight"),
-          await fetchCategoryData<Hotel[]>("hotel"),
-          await fetchCategoryData<Activity[]>("activity"),
-        ]);
+        const homeData = await Promise.all(
+          categories.map(async (category) => {
+            const data = await fetchCategoryData<FetchMap[typeof category]>(
+              category
+            );
+            return {
+              title: categoryTitleMap[category],
+              id: category,
+              products: data.sort(() => Math.random() - 0.5).slice(0, 3),
+            };
+          })
+        );
 
-        const categoryData: ProductState = [
-          {
-            title: categoryTitleMap["flight"],
-            id: "flight",
-            products: [...flight].sort(() => Math.random() - 0.5).slice(0, 3),
-          },
-          {
-            title: categoryTitleMap["hotel"],
-            id: "hotel",
-            products: [...hotel].sort(() => Math.random() - 0.5).slice(0, 3),
-          },
-          {
-            title: categoryTitleMap["activity"],
-            id: "activity",
-            products: [...activity].sort(() => Math.random() - 0.5).slice(0, 3),
-          },
-        ];
-
-        setProductState(categoryData);
+        setProductState(homeData as ProductState);
 
         setStatus("success");
       } catch (error) {
