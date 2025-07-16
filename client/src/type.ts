@@ -79,3 +79,9 @@ export type ActivityDetail = {
   includes: string[]; // 포함 사항
   rating: number; // 평점 (0.0 ~ 5.0)
 };
+
+export type FetchCategoryMap = {
+  flight: Flight[];
+  hotel: Hotel[];
+  activity: Activity[];
+};

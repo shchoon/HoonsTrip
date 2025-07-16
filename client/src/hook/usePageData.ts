@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import type { Flight, Hotel, Activity, Status } from "../type";
+import fetchCategoryData from "../api/fetch/fetchCategoryData";
+import { isValidCategory } from "../utils/inferType";
+import type {
+  Flight,
+  Hotel,
+  Activity,
+  Status,
+  FetchCategoryMap,
+} from "../type";
 
 export const usePageData = () => {
   const { category } = useParams();
 
   //   isValidId가 true이면 id의 값을 'flight' | 'hotel' | 'activity' 중 하나라고 확정(type guard)
-  const isValidCategory = (
-    category: unknown
-  ): category is "flight" | "hotel" | "activity" => {
-    return (
-      category === "flight" || category === "hotel" || category === "activity"
-    );
-  };
 
   const [data, setData] = useState<Flight[] | Hotel[] | Activity[]>([]);
   const [status, setStatus] = useState<Status>("idle");
@@ -25,13 +26,15 @@ export const usePageData = () => {
   } as const; // 리터럴 타입으로 확정
 
   useEffect(() => {
+    if (!isValidCategory(category)) return;
+
     const getData = async () => {
       setStatus("loading");
       try {
-        const res = await fetch(`http://localhost:3333/${category}`);
-        const data = await res.json();
-
-        setData(data);
+        const categoryData = await fetchCategoryData<
+          FetchCategoryMap[typeof category]
+        >(category);
+        setData(categoryData);
         setStatus("success");
       } catch (err) {
         alert(err);
