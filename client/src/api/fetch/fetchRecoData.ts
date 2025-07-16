@@ -27,7 +27,7 @@ const categoryTitleMap: Record<Category, string> = {
 };
 
 const fetchRecoData = async (curCategory: Category, country: string) => {
-  const allCategory: Category[] = ["flight", "hotel", "activity"] as const; // 새로운 카테고리 추가시 배열에 추가
+  const allCategory: Category[] = ["flight", "hotel", "activity"]; // 새로운 카테고리 추가시 배열에 추가
 
   const result = await Promise.all(
     allCategory
@@ -44,7 +44,7 @@ const fetchRecoData = async (curCategory: Category, country: string) => {
       })
   );
 
-  return result as RecoProductState[];
+  return result as RecoProductState[]; // ProductSection 컴포넌트를 사용하기 위한 객체 타입
 };
 
 export default fetchRecoData;

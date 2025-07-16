@@ -53,20 +53,19 @@ export const useDetailPageData = () => {
         category,
         id
       )) as FetchCategoryByIdMap[typeof category];
-      const country = data.country;
+      console.log(data);
       const detail =
         category === "flight"
           ? await fetchDetailData<FetchDetailMap[typeof category]>(
               category,
-              country
+              data.country
             )
           : await fetchDetailData<FetchDetailMap[typeof category]>(
               category,
-              undefined,
               id
             );
 
-      const recoData = await fetchRecoData(category, country);
+      const recoData = await fetchRecoData(category, data.country);
       setPageDataState((prev) => ({
         ...prev,
         data: data,
