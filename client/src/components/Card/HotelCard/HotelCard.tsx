@@ -19,7 +19,7 @@ type Props = {
 export default function HotelCard({ product, onClick }: Props) {
   return (
     <Card onClick={onClick}>
-      <HotelImage src={product.hotelImageUrl} alt={product.hotelName} />
+      <HotelImage src={product.image} alt={product.hotelName} />
       <InfoBox>
         <HotelName>{product.hotelName}</HotelName>
         <Location>{product.location}</Location>

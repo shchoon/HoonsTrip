@@ -1,6 +1,7 @@
 export type Caoursel = {
   id: number;
   title: string;
+  imagePath: string;
   image: string;
 };
 
@@ -8,7 +9,8 @@ export type Flight = {
   id: number;
   airlineName: string;
   country: string; // 예: "japan"
-  countryImage: string; // 국가 이미지 URL
+  image: string; // 국가 이미지 URL
+  imagePath: string;
   departureAirport: string;
   arrivalAirport: string;
   arrivalCountry: string; // 사용자용 표기
@@ -22,7 +24,8 @@ export type Flight = {
 export type Hotel = {
   id: number;
   hotelName: string;
-  hotelImageUrl: string;
+  image: string;
+  imagePath: string;
   location: string; // 예: "도쿄, 일본"
   country: string; // 예: "japan"
   checkInDate: string; // ISO date string
@@ -44,7 +47,8 @@ export type Activity = {
   price: number;
   currency: string;
   promotionTag: string;
-  imageUrl: string;
+  image: string;
+  imagePath: string;
 };
 
 export type Status = "idle" | "loading" | "success" | "error";

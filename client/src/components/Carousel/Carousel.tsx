@@ -71,7 +71,7 @@ export default function Carousel() {
 
   useEffect(() => {
     const getCarouselData = async () => {
-      const res = await fetch("http://localhost:3333/carousel");
+      const res = await fetch("http://localhost:3000/carousel");
       const data = await res.json();
       setCarouselData([...data, ...data.slice(0, 3)]);
     };
