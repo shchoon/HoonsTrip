@@ -18,9 +18,9 @@ async function fetchDetailData<T>(
   value: string
 ): Promise<T> {
   const fetchDetailMap = {
-    flight: (value: string) => `/?country=${value}`,
-    hotel: (value: string) => `/?hotel=${value}`,
-    activity: (value: string) => `/?activity=${value}`,
+    flight: (value: string) => `/country?country=${value}`,
+    hotel: (value: string) => `/hotelDetail?id=${value}`,
+    activity: (value: string) => `/activityDetail?id=${value}`,
   };
 
   const fetchUrl = fetchDetailMap[category](value);

@@ -62,9 +62,10 @@ export default function ImageCard({ category, data }: Props) {
 }
 
 function FlightImage({ data }: { data: Flight }) {
+  console.log(data);
   return (
     <>
-      <Image src={data.countryImage} alt={data.arrivalCountry} />
+      <Image src={data.image} alt={data.arrivalCountry} />
       <NameOverlay>{data.arrivalCountry}</NameOverlay>
     </>
   );
@@ -73,7 +74,7 @@ function FlightImage({ data }: { data: Flight }) {
 function HotelImage({ data }: { data: Hotel }) {
   return (
     <>
-      <Image src={data.hotelImageUrl} alt={data.hotelName} />
+      <Image src={data.image} alt={data.hotelName} />
       <NameOverlay>{data.hotelName}</NameOverlay>
     </>
   );
@@ -82,7 +83,7 @@ function HotelImage({ data }: { data: Hotel }) {
 function ActivityImage({ data }: { data: Activity }) {
   return (
     <>
-      <Image src={data.imageUrl} alt={data.activityName} />
+      <Image src={data.image} alt={data.activityName} />
       <NameOverlay>{data.activityName}</NameOverlay>
     </>
   );

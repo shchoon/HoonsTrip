@@ -26,7 +26,7 @@ function App() {
     /^\/(flight|hotel|activity)$/.test(location.pathname);
   // const [state, setState] = useState();
   useEffect(() => {
-    fetch("http://localhost:3000/flight?id=1").then(async (res) => {
+    fetch("http://localhost:3000/country?country=japan").then(async (res) => {
       const data = await res.json();
     });
   }, []);

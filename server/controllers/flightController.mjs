@@ -8,7 +8,10 @@ const flightController = async (req, res) => {
   try {
     // query에 id 있는 경우
     if (id) {
-      const { data: flight, error } = await supabase.from("flight").select("*");
+      const { data: flight, error } = await supabase
+        .from("flight")
+        .select("*")
+        .eq("id", id);
 
       if (error) {
         return res.status(500).json({ error: error.message });

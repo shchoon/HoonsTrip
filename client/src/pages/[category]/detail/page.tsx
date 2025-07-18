@@ -11,6 +11,7 @@ export default function DetailPage() {
   const { data, detail, recoDataState, category } = useDetailPageData();
   if (!data || !detail || !recoDataState) return;
 
+  console.log(data);
   return (
     <>
       <Wrapper>

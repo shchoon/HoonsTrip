@@ -73,6 +73,7 @@ export type HotelDetail = {
   airportShuttle: boolean;
   nearbyRestaurants: string[]; // 주변 맛집
   customerRating: number; // 고객 평점 (1~5)
+  star: number;
 };
 
 export type ActivityDetail = {

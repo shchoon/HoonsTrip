@@ -5,6 +5,9 @@ import carouselRoute from "./routes/carousel.mjs";
 import hotelRoute from "./routes/hotel.mjs";
 import flightRoute from "./routes/flight.mjs";
 import activityRoute from "./routes/activity.mjs";
+import countryInfo from "./routes/country.mjs";
+import activityDetail from "./routes/activtyDetail.mjs";
+import hotelDetail from "./routes/hotelDetail.mjs";
 
 dotenv.config();
 
@@ -16,6 +19,9 @@ app.use("/carousel", carouselRoute);
 app.use("/flight", flightRoute);
 app.use("/hotel", hotelRoute);
 app.use("/activity", activityRoute);
+app.use("/country", countryInfo);
+app.use("/activityDetail", activityDetail);
+app.use("/hotelDetail", hotelDetail);
 
 app.get("/", (req, res) => {
   res.send("Hello");
