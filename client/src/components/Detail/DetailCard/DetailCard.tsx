@@ -35,7 +35,7 @@ const InfoList = styled.ul`
 `;
 
 type Props = {
-  detail: CountryInfo | HotelDetail;
+  detail: CountryInfo | HotelDetail | ActivityDetail;
   category: "flight" | "hotel" | "activity";
 };
 
@@ -46,7 +46,7 @@ type DetailMap = {
 };
 
 function inferDetailType<C extends keyof DetailMap>(
-  category: C,
+  _category: C,
   detail: unknown
 ): detail is DetailMap[C] {
   return true;

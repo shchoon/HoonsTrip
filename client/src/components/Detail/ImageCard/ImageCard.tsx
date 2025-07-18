@@ -39,7 +39,7 @@ type ImageMap = {
 };
 
 const inferImageType = <C extends keyof ImageMap>(
-  category: C,
+  _category: C,
   data: unknown
 ): data is ImageMap[C] => {
   return true;

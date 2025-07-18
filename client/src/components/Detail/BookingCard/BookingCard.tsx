@@ -22,7 +22,7 @@ type BookingMap = {
 };
 
 const inferBookingType = <C extends keyof BookingMap>(
-  category: C,
+  _category: C,
   data: unknown
 ): data is BookingMap[C] => {
   return true;
