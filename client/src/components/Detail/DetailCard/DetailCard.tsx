@@ -49,6 +49,7 @@ function inferDetailType<C extends keyof DetailMap>(
   _category: C,
   detail: unknown
 ): detail is DetailMap[C] {
+  void detail; // detail가 사용되었다고 인식시킴
   return true;
 }
 
