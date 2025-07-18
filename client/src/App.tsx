@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
@@ -24,14 +23,7 @@ function App() {
   const isShowModal =
     locataion.pathname === "/" ||
     /^\/(flight|hotel|activity)$/.test(location.pathname);
-  // const [state, setState] = useState();
-  useEffect(() => {
-    fetch("http://localhost:3000/country?country=japan").then(async (res) => {
-      const data = await res.json();
-    });
-  }, []);
-  // if (!state) return;
-  // console.log(state);
+
   return (
     <>
       <Header />
