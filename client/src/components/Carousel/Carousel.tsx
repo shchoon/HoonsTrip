@@ -43,26 +43,8 @@ const CarouselItem = styled.div`
 const CarouselImage = styled.img`
   border-radius: 8px;
   width: 100%;
-  height: auto;
+  height: 80%;
   display: block;
-`;
-
-const Icon = styled.img<{ direction: string }>`
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  border-radius: 50%;
-  background-color: transparent;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  transform: ${({ direction }) =>
-    direction === "right" ? "rotate(180deg)" : "none"};
-
-  &:hover {
-    background-color: #e5e7eb; /* light gray 배경 */
-    transform: ${({ direction }) =>
-      direction === "right" ? "rotate(180deg) scale(1.2)" : "scale(1.2)"};
-  }
 `;
 
 export default function Carousel() {
@@ -71,7 +53,7 @@ export default function Carousel() {
 
   useEffect(() => {
     const getCarouselData = async () => {
-      const res = await fetch("http://localhost:3333/carousel");
+      const res = await fetch("http://localhost:3000/carousel");
       const data = await res.json();
       setCarouselData([...data, ...data.slice(0, 3)]);
     };
@@ -91,29 +73,10 @@ export default function Carousel() {
     };
   }, [carouselData]);
 
-  // const handleClickArrow = (direc: string) => {
-  //   if (!carouselData) return;
-
-  //   if (direc === "right") {
-  //     setSlideCount((prev) =>
-  //       prev === carouselData.length - 3 ? 0 : prev + 1
-  //     );
-  //   } else {
-  //     setSlideCount((prev) =>
-  //       prev === 0 ? carouselData.length - 3 : prev - 1
-  //     );
-  //   }
-  // };
-
   if (!carouselData) return;
 
   return (
     <CarouselContainer>
-      {/* <Icon
-        src={"/public/left-arrow.png"}
-        direction="left"
-        // onClick={() => handleClickArrow("left")}
-      /> */}
       <CarouselWrapper>
         <CarouselBox
           translateX={33.33 * slideCount}
@@ -133,11 +96,6 @@ export default function Carousel() {
           })}
         </CarouselBox>
       </CarouselWrapper>
-      {/* <Icon
-        src={"/public/left-arrow.png"}
-        direction="right"
-        // onClick={() => handleClickArrow("right")}
-      /> */}
     </CarouselContainer>
   );
 }

@@ -3,9 +3,9 @@ import { apiClient } from "../apiClient";
 import type { Category } from "../../type";
 
 const fetchCategoryByIdMap: Record<Category, string> = {
-  flight: "/flight?flight=",
-  hotel: "/hotel?hotel=",
-  activity: "/activity?activity=",
+  flight: "/flight?id=",
+  hotel: "/hotel?id=",
+  activity: "/activity?id=",
 };
 
 // switch case -> mapping 함수로 변경

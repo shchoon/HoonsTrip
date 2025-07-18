@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import type { ActivityDetail, CountryInfo, HotelDetail } from "../../../type";
+import { formatArrToStr } from "../../../utils/formatArrToAtr";
 
 const InfoSection = styled.div`
   flex: 1;
@@ -73,11 +74,11 @@ function HotelDetail({ detail }: { detail: HotelDetail }) {
     <>
       <SubTitle>호텔 정보</SubTitle>
       <InfoList>
-        <li>등급: ⭐⭐⭐⭐</li>
-        <li>조식 포함: 예</li>
-        <li>편의 시설: 수영장, 와이파이, 피트니스 센터</li>
+        <li>등급: {Array(detail.star).fill("⭐").join("")}</li>
+        <li>조식 포함: {detail.breakfastIncluded ? "⭕" : "❌"}</li>
+        <li>편의 시설: {formatArrToStr(detail.amenities)}</li>
         <li>공항 셔틀: 제공</li>
-        <li>주변 맛집: </li>
+        <li>주변 맛집: {formatArrToStr(detail.nearbyRestaurants)}</li>
         <li>고객 평점: {detail.rating} / 5</li>
       </InfoList>
     </>
@@ -90,9 +91,9 @@ function ActivityDetail({ detail }: { detail: ActivityDetail }) {
       <SubTitle>액티비티 정보</SubTitle>
       <InfoList>
         <li>소요시간: {detail.duration}</li>
-        <li>지원 언어: </li>
+        <li>지원 언어: {formatArrToStr(detail.languages)} </li>
         <li>최소 인원: {detail.minParticipants}명</li>
-        <li>포함 사항: </li>
+        <li>포함 사항: {formatArrToStr(detail.includes)}</li>
         <li>고객 평점: {detail.rating} / 5</li>
       </InfoList>
     </>
