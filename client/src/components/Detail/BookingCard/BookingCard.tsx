@@ -25,6 +25,7 @@ const inferBookingType = <C extends keyof BookingMap>(
   _category: C,
   data: unknown
 ): data is BookingMap[C] => {
+  void data; // data가 사용되었다고 인식시킴
   return true;
 };
 
