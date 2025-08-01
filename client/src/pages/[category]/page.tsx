@@ -10,7 +10,6 @@ export default function Page() {
 
   if (status !== "success") return;
 
-  console.log(data);
   return (
     <ProductSection
       category={category}
