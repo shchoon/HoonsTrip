@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <>
       {productState.map((product) => {
-        console.log(product);
         return (
           <ProductSection
+            key={product.id}
             category={product.id}
             title={product.title}
             products={product.products}

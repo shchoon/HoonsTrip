@@ -87,9 +87,9 @@ export default function Carousel() {
             }
           }}
         >
-          {carouselData.map((data) => {
+          {carouselData.map((data, i) => {
             return (
-              <CarouselItem>
+              <CarouselItem key={data.id + i}>
                 <CarouselImage src={data.image} alt="여행지1" />
               </CarouselItem>
             );
