@@ -8,6 +8,7 @@
     "start:client": "npm --prefix client run dev"
   },
   "devDependencies": {
+    "@types/node": "^24.1.0",
     "concurrently": "^9.1.2"
   }
 }

@@ -1,4 +1,4 @@
-name: "Test"
+name: Vitest Tests for Component & Unit test
 on:
   pull_request:
     branches: ["main", "dev"]
