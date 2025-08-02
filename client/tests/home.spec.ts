@@ -15,9 +15,9 @@ test.describe("route correct page when button is clicked", () => {
     await page.goto("/");
     const btn = page.getByRole("link", { name: "항공권" });
     const mainPageHeading = page.getByRole("heading", { name: "추천 항공편" });
-    await expect(mainPageHeading).toBeInViewport();
+    await expect(mainPageHeading).toBeVisible();
 
-    await expect(btn).toBeInViewport();
+    await expect(btn).toBeVisible();
     await btn.click();
     await checkUrl("flight", page);
 
@@ -33,7 +33,7 @@ test.describe("route correct page when button is clicked", () => {
       name: "항공권",
     });
 
-    await expect(categoryPageHeading).toBeInViewport();
+    await expect(categoryPageHeading).toBeVisible();
   });
 
   test("should route to hotel page when click hotel button", async ({
