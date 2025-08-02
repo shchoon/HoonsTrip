@@ -18,7 +18,7 @@ type Props = {
 
 export default function FlightCard({ product, onClick }: Props) {
   return (
-    <Card onClick={onClick}>
+    <Card data-testid="card" onClick={onClick}>
       <CountryImage src={product.image} alt={product.arrivalCountry} />
       <AirlineName>{product.airlineName}</AirlineName>
       <InfoBox>

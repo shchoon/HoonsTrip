@@ -1,5 +1,5 @@
+"use client";
 import ProductSection from "../../components/ProductSection/ProductSection";
-
 import { useHomeData } from "../../hook/useHomeData";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
       {productState.map((product) => {
         return (
           <ProductSection
-            key={product.id}
+            key={product.title}
             category={product.id}
             title={product.title}
             products={product.products}

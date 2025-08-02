@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import type { ActivityDetail, CountryInfo, HotelDetail } from "../../../type";
-import { formatArrToStr } from "../../../utils/formatArrToAtr";
+import { formatArrToStr } from "../../../utils/formatArrToStr";
 
 const InfoSection = styled.div`
   flex: 1;
@@ -64,7 +64,7 @@ function FlightDetail({ detail }: { detail: CountryInfo }) {
         <li>통화: {detail.currency}</li>
         <li>언어: {detail.language}</li>
         <li>추천 음식: {detail.recommendedFood}</li>
-        <li>추천 관광지: {detail.recommendedAttractions}</li>
+        <li>추천 관광지: {formatArrToStr(detail.recommendedAttractions)}</li>
       </InfoList>
     </>
   );
@@ -78,7 +78,7 @@ function HotelDetail({ detail }: { detail: HotelDetail }) {
         <li>등급: {Array(detail.star).fill("⭐").join("")}</li>
         <li>조식 포함: {detail.breakfastIncluded ? "⭕" : "❌"}</li>
         <li>편의 시설: {formatArrToStr(detail.amenities)}</li>
-        <li>공항 셔틀: 제공</li>
+        <li>공항 셔틀: {detail.airportShuttle ? "⭕" : "❌"}</li>
         <li>주변 맛집: {formatArrToStr(detail.nearbyRestaurants)}</li>
         <li>고객 평점: {detail.rating} / 5</li>
       </InfoList>
