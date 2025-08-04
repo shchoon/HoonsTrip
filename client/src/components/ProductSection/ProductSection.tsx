@@ -59,12 +59,30 @@ const CardComponent = (
   };
 
   if (category === "flight") {
-    return <FlightCard product={product as Flight} onClick={handleClick} />;
+    return (
+      <FlightCard
+        key={product.id}
+        product={product as Flight}
+        onClick={handleClick}
+      />
+    );
   }
   if (category === "hotel") {
-    return <HotelCard product={product as Hotel} onClick={handleClick} />;
+    return (
+      <HotelCard
+        key={product.id}
+        product={product as Hotel}
+        onClick={handleClick}
+      />
+    );
   } else if (category === "activity") {
-    return <ActivityCard product={product as Activity} onClick={handleClick} />;
+    return (
+      <ActivityCard
+        key={product.id}
+        product={product as Activity}
+        onClick={handleClick}
+      />
+    );
   } else {
     return null;
   }
@@ -88,6 +106,7 @@ export default function ProductSection({
         </CardContainer>
         {loadMore && (
           <LoadMore
+            data-testid="loadMore"
             onClick={() => {
               router(`/${category}`);
             }}
