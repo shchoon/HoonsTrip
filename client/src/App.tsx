@@ -28,7 +28,7 @@ function App() {
     <>
       <Header />
       <MainContainer>
-        {isShowModal && <Carousel />}
+        {/* {isShowModal && <Carousel />} */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:category" element={<Page />} />

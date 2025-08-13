@@ -95,6 +95,7 @@ export default function ProductSection({
   loadMore = false,
 }: Props) {
   const { router } = useRouter();
+
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>

@@ -1,15 +1,31 @@
 import ProductSection from "../../components/ProductSection/ProductSection";
 
 import { useHomeData } from "../../hook/useHomeData";
+import { Suspense } from "react";
+import TestComponent from "../../components/TestComponent";
+import LoadingProduct from "../../loadingUI/LoadingProduct";
+
+import { lazy } from "react";
+
+// const LazyLoading = lazy(() => import("../../components/TestComponent"));
 
 export default function Home() {
-  const { productState, status } = useHomeData();
+  // const { productState, status } = useHomeData();
 
-  if (status !== "success" || !productState) return;
+  // if (status !== "success" || !productState) return;
 
   return (
     <>
-      {productState.map((product) => {
+      <Suspense fallback={<LoadingProduct />}>
+        <TestComponent category="flight" />
+      </Suspense>
+      <Suspense fallback={<LoadingProduct />}>
+        <TestComponent category="hotel" />
+      </Suspense>
+      <Suspense fallback={<LoadingProduct />}>
+        <TestComponent category="activity" />
+      </Suspense>
+      {/* {productState.map((product) => {
         return (
           <ProductSection
             key={product.id}
@@ -19,7 +35,7 @@ export default function Home() {
             loadMore={true}
           />
         );
-      })}
+      })} */}
     </>
   );
 }

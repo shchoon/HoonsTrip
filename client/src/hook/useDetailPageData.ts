@@ -45,15 +45,17 @@ export const useDetailPageData = () => {
     null
   );
 
+  // useEffect(() => {
+  //   console.log(category, id);
+  // }, [category, id]);
   useEffect(() => {
+    console.log("mount");
     if (!isValidCategory(category) || !isValidId(id)) return;
-
     const getData = async () => {
       const data = (await fetchCategoryDataByID(
         category,
         id
       )) as FetchCategoryByIdMap[typeof category];
-      console.log(data);
       const detail =
         category === "flight"
           ? await fetchDetailData<FetchDetailMap[typeof category]>(
@@ -76,6 +78,11 @@ export const useDetailPageData = () => {
     };
 
     getData();
+
+    return () => {
+      setPageDataState({ data: null, detail: null });
+      setRecoDataState(null);
+    };
   }, [category, id]);
 
   const { data, detail } = pageDataState;
