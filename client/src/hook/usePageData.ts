@@ -1,5 +1,6 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 
 import fetchCategoryData from "../api/fetch/fetchCategoryData";
 import { isValidCategory } from "../utils/inferType";
@@ -12,8 +13,8 @@ import type {
 } from "../type";
 
 export const usePageData = () => {
-  const { category } = useParams();
-
+  const { category } = useParams<{ category: string }>();
+  console.log(category);
   //   isValidId가 true이면 id의 값을 'flight' | 'hotel' | 'activity' 중 하나라고 확정(type guard)
 
   const [data, setData] = useState<Flight[] | Hotel[] | Activity[]>([]);

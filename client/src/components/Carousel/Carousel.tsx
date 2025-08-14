@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -53,7 +54,7 @@ export default function Carousel() {
 
   useEffect(() => {
     const getCarouselData = async () => {
-      const res = await fetch("http://localhost:3000/carousel");
+      const res = await fetch("http://localhost:3001/carousel");
       const data = await res.json();
       setCarouselData([...data, ...data.slice(0, 3)]);
     };

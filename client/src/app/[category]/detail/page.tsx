@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 
 import ProductSection from "../../../components/ProductSection/ProductSection";
@@ -10,6 +11,17 @@ import { useDetailPageData } from "../../../hook/useDetailPageData";
 export default function DetailPage() {
   const { data, detail, recoDataState, category } = useDetailPageData();
   if (!data || !detail || !recoDataState) return;
+
+  // const recoData = useMemo(() => {
+  //   const country = data.country
+
+  //   recoDataState.map((item) => {
+  //     return {
+  //       ...item,
+  //       data: item.data.filter(el => el.country === country)
+  //     }
+  //   })
+  // })
 
   return (
     <>

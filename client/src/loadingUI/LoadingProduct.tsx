@@ -1,6 +1,6 @@
+"use client";
 import styled from "styled-components";
 
-import type { Flight, Hotel, Activity } from "../../type";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 

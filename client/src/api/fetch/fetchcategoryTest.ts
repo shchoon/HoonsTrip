@@ -20,7 +20,7 @@ const fetchCategory = (category: Category) => {
   //   while (performance.now() - startTime < 1000) {
   //     // 매우 느린 코드를 재현하기 위해 500ms동안 아무것도 하지 않습니다
   //   }
-  return fetch("http://localhost:3000" + fetchMap[category]).then((res) =>
+  return fetch("http://localhost:3001" + fetchMap[category]).then((res) =>
     res.json()
   );
 };

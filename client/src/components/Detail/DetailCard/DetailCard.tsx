@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import type { ActivityDetail, CountryInfo, HotelDetail } from "../../../type";
-import { formatArrToStr } from "../../../utils/formatArrToStr";
 
 const InfoSection = styled.div`
   flex: 1;

@@ -1,3 +1,4 @@
+"use client";
 import { usePageData } from "../../hook/usePageData";
 import ProductSection from "../../components/ProductSection/ProductSection";
 

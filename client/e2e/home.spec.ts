@@ -12,7 +12,7 @@ test.describe("route correct page when button is clicked", () => {
   test("should route to flight page when click flight button", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/home");
 
     const btn = page.getByRole("link", { name: "항공권" });
     const mainPageHeading = page.getByRole("heading", { name: "추천 항공편" });
@@ -22,7 +22,7 @@ test.describe("route correct page when button is clicked", () => {
     await btn.click();
     await checkUrl("flight", page);
 
-    await page.goto("/");
+    await page.goto("/home");
 
     const loadMoreBtn = page.getByTestId("loadMore").nth(0);
 
@@ -40,7 +40,7 @@ test.describe("route correct page when button is clicked", () => {
   test("should route to hotel page when click hotel button", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/home");
 
     const btn = page.getByRole("link", { name: "호텔" });
     const mainPageHeading = page.getByRole("heading", { name: "추천 호텔" });
@@ -50,7 +50,7 @@ test.describe("route correct page when button is clicked", () => {
     await btn.click();
     await checkUrl("hotel", page);
 
-    await page.goto("/");
+    await page.goto("/home");
 
     const loadMoreBtn = page.getByTestId("loadMore").nth(1);
 
@@ -66,7 +66,7 @@ test.describe("route correct page when button is clicked", () => {
   test("should route to activity page when click activity button", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/home");
 
     const btn = page.getByRole("link", { name: "액티비티" });
     const mainPageHeading = page.getByRole("heading", {
@@ -79,7 +79,7 @@ test.describe("route correct page when button is clicked", () => {
     await btn.click();
     await checkUrl("activity", page);
 
-    await page.goto("/");
+    await page.goto("/home");
 
     const loadMoreBtn = page.getByTestId("loadMore").nth(2);
 

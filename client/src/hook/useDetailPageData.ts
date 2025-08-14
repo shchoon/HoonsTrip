@@ -1,5 +1,6 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "next/navigation";
 
 import { isValidCategory, isValidId } from "../utils/inferType";
 import fetchCategoryDataByID from "../api/fetch/fetchCategoryDataByID";
@@ -29,9 +30,8 @@ type FetchCategoryByIdMap = {
 };
 
 export const useDetailPageData = () => {
-  const { category } = useParams();
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get("id");
+  const { category } = useParams<{ category: Category }>();
+  const id = useSearchParams()?.get("id");
 
   const [pageDataState, setPageDataState] = useState<{
     data: FetchCategoryByIdMap[Category] | null;
@@ -45,11 +45,7 @@ export const useDetailPageData = () => {
     null
   );
 
-  // useEffect(() => {
-  //   console.log(category, id);
-  // }, [category, id]);
   useEffect(() => {
-    console.log("mount");
     if (!isValidCategory(category) || !isValidId(id)) return;
     const getData = async () => {
       const data = (await fetchCategoryDataByID(

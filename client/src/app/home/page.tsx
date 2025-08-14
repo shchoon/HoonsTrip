@@ -1,6 +1,11 @@
 "use client";
-import ProductSection from "../../components/ProductSection/ProductSection";
+import { Suspense } from "react";
+import TestComponent from "../components/TestComponent";
+import LoadingProduct from "../loadingUI/LoadingProduct";
 import { useHomeData } from "../../hook/useHomeData";
+import ProductSection from "../../components/ProductSection/ProductSection";
+
+// const LazyLoading = lazy(() => import("../../components/TestComponent"));
 
 export default function Home() {
   const { productState, status } = useHomeData();
@@ -9,10 +14,19 @@ export default function Home() {
 
   return (
     <>
+      {/* <Suspense fallback={<LoadingProduct />}>
+        <TestComponent category="flight" />
+      </Suspense>
+      <Suspense fallback={<LoadingProduct />}>
+        <TestComponent category="hotel" />
+      </Suspense>
+      <Suspense fallback={<LoadingProduct />}>
+        <TestComponent category="activity" />
+      </Suspense> */}
       {productState.map((product) => {
         return (
           <ProductSection
-            key={product.title}
+            key={product.id}
             category={product.id}
             title={product.title}
             products={product.products}
