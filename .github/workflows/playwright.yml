@@ -26,8 +26,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test --project replay-chromium
+        run: npx playwright test
         env:
-          REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
+          # REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_URL: ${{secrets.SUPABASE_URL}}
