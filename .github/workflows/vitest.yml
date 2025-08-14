@@ -36,4 +36,4 @@ jobs:
         # ./client 경로 추가
         with:
           working-directory: ./client
-          vite-config-path: ./client/vitest.config.ts
+          vite-config-path: ./client/vitest.config.mts
