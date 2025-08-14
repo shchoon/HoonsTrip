@@ -11,5 +11,9 @@ export default defineConfig({
     include: [
       "./**/*.test.{ts,tsx}", // 루트 기준 모든 폴더
     ],
+    coverage: {
+      reporter: ["text", "json-summary", "lcov"], // json-summary 포함
+      all: true,
+    },
   },
 });
