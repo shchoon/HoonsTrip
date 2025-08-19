@@ -1,15 +1,20 @@
-"use client";
-import { usePageData } from "../../hook/usePageData";
 import ProductSection from "../../components/ProductSection/ProductSection";
+import type { Activity, Category, Flight, Hotel } from "../../type";
+import fetchFromServer from "../../api/fetch/fetchFromServer";
 
-export default function Page() {
-  const { category, isValidcategory, data, status, title } = usePageData();
+const title: Record<Category, string> = {
+  flight: "항공권",
+  hotel: "호텔",
+  activity: "액티비티",
+};
 
-  if (!isValidcategory(category)) {
-    return <div>잘못된 경로입니다. URL을 다시 확인해주세요</div>;
-  }
-
-  if (status !== "success") return;
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ category: Category }>;
+}) {
+  const { category } = await params;
+  const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(category);
 
   return (
     <ProductSection

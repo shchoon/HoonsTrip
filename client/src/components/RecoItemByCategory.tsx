@@ -1,5 +1,6 @@
 import type { Activity, Category, Flight, Hotel } from "../type";
 import ProductSection from "./ProductSection/ProductSection";
+import fetchFromServer from "../api/fetch/fetchFromServer";
 
 const TitleMap: Record<Category, string> = {
   flight: "추천 항공편",
@@ -12,11 +13,12 @@ export default async function RecoItemByCategory({
 }: {
   category: Category;
 }) {
-  const data: Flight[] | Hotel[] | Activity[] = await fetch(
-    "http://localhost:3001/" + category,
-    { cache: "no-store" }
-  ).then((res) => res.json());
+  const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(
+    category,
+    "no-store"
+  );
   const items = data.sort(() => Math.random() - 0.5).slice(0, 3);
+
   return (
     <ProductSection
       category={category}
