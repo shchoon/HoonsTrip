@@ -1,10 +1,20 @@
-/** @type {import('next').NextConfig} */
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
 const nextConfig = {
-  // output: "export", // Outputs a Single-Page Application (SPA).
-  distDir: "./dist", // Changes the build output directory to `./dist/`.
+  distDir: "./dist",
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: process.env.SUPABASE_HOSTNAME,
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(nextConfig);

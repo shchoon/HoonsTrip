@@ -1,15 +1,20 @@
 "use client";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
+import { lazy } from "react";
 import Image from "next/image";
 
-import FlightCard from "../Card/FlightCard/FlightCard";
-import HotelCard from "../Card/HotelCard/HotelCard";
-import ActivityCard from "../Card/ActivityCard/ActivityCard";
+// import FlightCard from "../Card/FlightCard/FlightCard";
+// import HotelCard from "../Card/HotelCard/HotelCard";
+// import ActivityCard from "../Card/ActivityCard/ActivityCard";
 import LoadMoreIcon from "../../../public/load-more.png";
 
 import type { Flight, Hotel, Activity } from "../../type";
 import { memo } from "react";
+
+const FlightCard = lazy(() => import("../Card/FlightCard/FlightCard"));
+const HotelCard = lazy(() => import("../Card/HotelCard/HotelCard"));
+const ActivityCard = lazy(() => import("../Card/ActivityCard/ActivityCard"));
 
 const ProductContainer = styled.div`
   width: 100%;

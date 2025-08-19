@@ -1,26 +1,30 @@
-"use client";
-import styled from "styled-components";
+import CarouselCom from "../../components/Carousel/Carousel";
+// import { apiClient } from "../../api/apiClient";
+// import type { Carousel } from "../../type";
 
-import Carousel from "../../components/Carousel/Carousel";
-
-const MainContainer = styled.div`
-  margin-top: 80px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-`;
-
-export default function HomeLayout({
+export default async function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // carouselData server component fetching
+  const data = await fetch("http://localhost:3001/carousel", {
+    cache: "force-cache",
+  }).then((res) => res.json());
+
   return (
-    <MainContainer>
-      <Carousel />
+    <div
+      style={{
+        marginTop: 80,
+        padding: 20,
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
+        alignItems: "center",
+      }}
+    >
+      <CarouselCom carouselData={data} />
       {children}
-    </MainContainer>
+    </div>
   );
 }
