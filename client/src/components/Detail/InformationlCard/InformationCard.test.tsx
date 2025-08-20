@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import DetailCard from "./DetailCard";
+import DetailCard from "./InformationCard";
 import { describe } from "vitest";
 import { formatArrToStr } from "../../../utils/formatArrToStr";
 import type { ActivityDetail, CountryInfo, HotelDetail } from "../../../type";

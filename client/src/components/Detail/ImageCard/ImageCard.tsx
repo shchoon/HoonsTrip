@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 import type { Activity, Category, Flight, Hotel } from "../../../type";
 

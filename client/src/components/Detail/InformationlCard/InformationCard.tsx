@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 
 import type { ActivityDetail, CountryInfo, HotelDetail } from "../../../type";
@@ -107,7 +108,7 @@ function ActivityDetail({ detail }: { detail: ActivityDetail }) {
   );
 }
 
-export default function DetailCard({ detail, category }: Props) {
+export default function InformationCard({ detail, category }: Props) {
   return (
     <InfoSection>
       {category === "flight" && inferDetailType(category, detail) && (

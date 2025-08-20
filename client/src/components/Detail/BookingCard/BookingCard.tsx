@@ -1,3 +1,4 @@
+"use client";
 import type { Flight, Hotel, Category, Activity } from "../../../type";
 
 import {

@@ -8,23 +8,29 @@ const TitleMap: Record<Category, string> = {
   activity: "추천 액티비티",
 };
 
-export default async function RecoItemByCategory({
+export default async function CategoryItem({
   category,
+  usedPage,
 }: {
   category: Category;
+  usedPage: "home" | "category";
 }) {
   const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(
     category,
     "no-store"
   );
-  const items = data.sort(() => Math.random() - 0.5).slice(0, 3);
+
+  const items =
+    usedPage === "home"
+      ? data.sort(() => Math.random() - 0.5).slice(0, 3)
+      : data;
 
   return (
     <ProductSection
       category={category}
       title={TitleMap[category]}
       products={items}
-      loadMore={true}
+      loadMore={usedPage === "category"}
     />
   );
 }

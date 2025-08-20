@@ -1,79 +1,43 @@
-"use client";
-import styled from "styled-components";
-
+import DetailCard from "../../../components/Detail/DetailCard";
 import ProductSection from "../../../components/ProductSection/ProductSection";
-import ImageCard from "../../../components/Detail/ImageCard/ImageCard";
-import DetailCard from "../../../components/Detail/DetailCard/DetailCard";
-import BookingCard from "../../../components/Detail/BookingCard/BookingCard";
+import { getDetailPageData } from "../../../api/fetch/getDetailPageData";
+import { Category } from "../../../type";
 
-import { useDetailPageData } from "../../../hook/useDetailPageData";
+export default async function DetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ category: Category }>;
+  searchParams: Promise<{ [key: string]: "id" | "country" }>;
+}) {
+  const { category } = await params;
+  const { id } = await searchParams;
 
-export default function DetailPage() {
-  const { data, detail, recoDataState, category } = useDetailPageData();
-  if (!data || !detail || !recoDataState) return;
-
-  // const recoData = useMemo(() => {
-  //   const country = data.country
-
-  //   recoDataState.map((item) => {
-  //     return {
-  //       ...item,
-  //       data: item.data.filter(el => el.country === country)
-  //     }
-  //   })
-  // })
+  const { dataById, informationData, recoData } = await getDetailPageData(
+    category,
+    id
+  );
 
   return (
     <>
-      <Wrapper>
-        {/* 대표 이미지 */}
-        <ImageCard
-          category={category as "flight" | "hotel" | "activity"}
-          data={data}
-        />
-        {/* 상세 정보 */}
-        <DetailCard
-          category={category as "flight" | "hotel" | "activity"}
-          detail={detail}
-        />
-        {/* 예약 정보 */}
-        <BookingCard
-          category={category as "flight" | "hotel" | "activity"}
-          data={data}
-        />
-      </Wrapper>
+      <DetailCard
+        category={category}
+        dataById={dataById}
+        informationData={informationData}
+      />
       {/* 추천 항목 */}
-      <RecommendSection>
-        {recoDataState.map((data) => {
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        {recoData.map((data) => {
           return (
             <ProductSection
+              key={data.category}
               category={data.category}
               title={data.title}
               products={data.data}
             />
           );
         })}
-      </RecommendSection>
+      </div>
     </>
   );
 }
-
-const RecommendSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const Wrapper = styled.div`
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
-
-  display: flex;
-  gap: 40px;
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 30px;
-  }
-`;

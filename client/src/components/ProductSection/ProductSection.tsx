@@ -10,7 +10,6 @@ import Image from "next/image";
 import LoadMoreIcon from "../../../public/load-more.png";
 
 import type { Flight, Hotel, Activity } from "../../type";
-import { memo } from "react";
 
 const FlightCard = lazy(() => import("../Card/FlightCard/FlightCard"));
 const HotelCard = lazy(() => import("../Card/HotelCard/HotelCard"));
@@ -97,7 +96,7 @@ const CardComponent = (
   }
 };
 
-export default memo(function ProductSection({
+export default function ProductSection({
   category,
   title,
   products,
@@ -111,7 +110,9 @@ export default memo(function ProductSection({
       <ProductContent>
         <CardContainer>
           {products.map((product) => {
-            return <>{CardComponent(category, product)}</>;
+            return (
+              <div key={product.id}>{CardComponent(category, product)}</div>
+            );
           })}
         </CardContainer>
         {loadMore && (
@@ -127,4 +128,4 @@ export default memo(function ProductSection({
       </ProductContent>
     </ProductContainer>
   );
-});
+}

@@ -14,8 +14,10 @@ export default function RootLayout({
       </head>
       <body>
         <StyledComponentsRegistry>
-          <Header />
-          <div id="root">{children}</div>
+          <div id="root">
+            <Header />
+            <div style={{ paddingTop: "50px" }}>{children}</div>
+          </div>
         </StyledComponentsRegistry>
       </body>
     </html>

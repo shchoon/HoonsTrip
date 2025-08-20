@@ -36,7 +36,7 @@ export default function LoadingProduct() {
       </ProductTitle>
       <ProductContent>
         <CardContainer>
-          {Array.from({ length: 3 }).map((_, i) => {
+          {Array.from({ length: 9 }).map((_, i) => {
             return <Skeleton key={i} height={400} />;
           })}
         </CardContainer>
