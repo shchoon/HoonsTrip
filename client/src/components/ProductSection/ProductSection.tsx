@@ -117,7 +117,6 @@ export default function ProductSection({
         </CardContainer>
         {loadMore && (
           <LoadMore
-            data-testid="loadMore"
             onClick={() => {
               router.push(`/${category}`);
             }}

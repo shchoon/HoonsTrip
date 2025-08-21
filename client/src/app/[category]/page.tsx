@@ -1,6 +1,6 @@
 import type { Category } from "../../type";
 import { Suspense } from "react";
-import LoadingProduct from "./loading";
+import LoadingProduct from "../../loadingUI/LoadingProduct";
 import CategoryItem from "../../components/CategoryItem";
 
 export default async function CategoryPage({
@@ -9,16 +9,10 @@ export default async function CategoryPage({
   params: Promise<{ category: Category }>;
 }) {
   const { category } = await params;
-  // const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(category);
 
   return (
-    <Suspense fallback={<LoadingProduct />}>
+    <Suspense fallback={<LoadingProduct itemLength={9} />}>
       <CategoryItem category={category} usedPage="category" />
     </Suspense>
-    // <ProductSection
-    //   category={category}
-    //   title={title[category]}
-    //   products={data}
-    // />
   );
 }

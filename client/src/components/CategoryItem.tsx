@@ -3,9 +3,9 @@ import ProductSection from "./ProductSection/ProductSection";
 import fetchFromServer from "../api/fetch/fetchFromServer";
 
 const TitleMap: Record<Category, string> = {
-  flight: "추천 항공편",
-  hotel: "추천 호텔",
-  activity: "추천 액티비티",
+  flight: "항공편",
+  hotel: "호텔",
+  activity: "액티비티",
 };
 
 export default async function CategoryItem({
@@ -25,12 +25,14 @@ export default async function CategoryItem({
       ? data.sort(() => Math.random() - 0.5).slice(0, 3)
       : data;
 
+  const title =
+    usedPage === "home" ? "추천 " + TitleMap[category] : TitleMap[category];
   return (
     <ProductSection
       category={category}
-      title={TitleMap[category]}
+      title={title}
       products={items}
-      loadMore={usedPage === "category"}
+      loadMore={usedPage === "home"}
     />
   );
 }

@@ -28,7 +28,7 @@ const ProductTitle = styled.h3`
   text-align: start;
 `;
 
-export default function LoadingProduct() {
+export default function LoadingProduct({ itemLength }: { itemLength: number }) {
   return (
     <ProductContainer>
       <ProductTitle>
@@ -36,7 +36,7 @@ export default function LoadingProduct() {
       </ProductTitle>
       <ProductContent>
         <CardContainer>
-          {Array.from({ length: 3 }).map((_, i) => {
+          {Array.from({ length: itemLength }).map((_, i) => {
             return <Skeleton key={i} height={400} />;
           })}
         </CardContainer>
