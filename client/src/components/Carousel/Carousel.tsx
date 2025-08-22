@@ -1,7 +1,9 @@
+"use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styled from "styled-components";
 
-import type { Caoursel } from "../../type";
+import type { Carousel } from "../../type";
 
 interface CarouselBoxProps {
   translateX: number;
@@ -20,6 +22,7 @@ const CarouselContainer = styled.section`
 const CarouselWrapper = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 100%;
 `;
 
 const CarouselBox = styled.div.withConfig({
@@ -35,31 +38,23 @@ const CarouselBox = styled.div.withConfig({
 const CarouselItem = styled.div`
   display: flex;
   flex: 0 0 33.33%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   padding: 0 5px;
   box-sizing: border-box;
-  align-items: center;
 `;
 
-const CarouselImage = styled.img`
+const CarouselImage = styled(Image)`
   border-radius: 8px;
-  width: 100%;
-  height: 80%;
-  display: block;
 `;
 
-export default function Carousel() {
-  const [carouselData, setCarouselData] = useState<Caoursel[]>();
+export default function Carousel({
+  carouselData,
+}: {
+  carouselData: Carousel[];
+}) {
   const [slideCount, setSlideCount] = useState(0);
-
-  useEffect(() => {
-    const getCarouselData = async () => {
-      const res = await fetch("http://localhost:3000/carousel");
-      const data = await res.json();
-      setCarouselData([...data, ...data.slice(0, 3)]);
-    };
-
-    getCarouselData();
-  }, []);
 
   useEffect(() => {
     if (!carouselData) return;
@@ -90,7 +85,12 @@ export default function Carousel() {
           {carouselData.map((data, i) => {
             return (
               <CarouselItem key={data.id + i}>
-                <CarouselImage src={data.image} alt="여행지1" />
+                <CarouselImage
+                  fill
+                  priority={i < 3}
+                  src={data.image}
+                  alt={data.title}
+                />
               </CarouselItem>
             );
           })}

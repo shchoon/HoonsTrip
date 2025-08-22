@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors());
-const PORT = 3000;
+const PORT = 3001;
 
 app.use("/carousel", carouselRoute);
 app.use("/flight", flightRoute);

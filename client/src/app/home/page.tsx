@@ -1,25 +1,19 @@
-"use client";
-import ProductSection from "../../components/ProductSection/ProductSection";
-import { useHomeData } from "../../hook/useHomeData";
+import { Suspense } from "react";
+import LoadingProduct from "../../loadingUI/LoadingProduct";
+import CategoryItem from "../../components/CategoryItem";
 
 export default function Home() {
-  const { productState, status } = useHomeData();
-
-  if (status !== "success" || !productState) return;
-
   return (
     <>
-      {productState.map((product) => {
-        return (
-          <ProductSection
-            key={product.title}
-            category={product.id}
-            title={product.title}
-            products={product.products}
-            loadMore={true}
-          />
-        );
-      })}
+      <Suspense fallback={<LoadingProduct itemLength={3} />}>
+        <CategoryItem category="flight" usedPage="home" />
+        <Suspense fallback={<LoadingProduct itemLength={3} />}>
+          <CategoryItem category="hotel" usedPage="home" />
+        </Suspense>
+        <Suspense fallback={<LoadingProduct itemLength={3} />}>
+          <CategoryItem category="activity" usedPage="home" />
+        </Suspense>
+      </Suspense>
     </>
   );
 }

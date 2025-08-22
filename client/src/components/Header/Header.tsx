@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+"use client";
+import Link from "next/link";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
@@ -82,22 +83,22 @@ export default function Header() {
     <HeaderWrapper>
       <HeaderContainer>
         {/* 로고 */}
-        <Logo to="/">HoonsTrip</Logo>
+        <Logo href="/home">HoonsTrip</Logo>
 
         {/* 메뉴 */}
         <Nav>
-          <NavLink to="/">홈</NavLink>
-          <NavLink to="/flight">항공권</NavLink>
-          <NavLink to="/hotel">호텔</NavLink>
-          <NavLink to="/activity">액티비티</NavLink>
-          <NavLink to="/mypage">마이페이지</NavLink>
+          <NavLink href="/home">홈</NavLink>
+          <NavLink href="/flight">항공권</NavLink>
+          <NavLink href="/hotel">호텔</NavLink>
+          <NavLink href="/activity">액티비티</NavLink>
+          <NavLink href="/mypage">마이페이지</NavLink>
         </Nav>
 
         {/* 유저 메뉴 */}
         <UserMenu>
           <IconButton aria-label="검색">🔍</IconButton>
           <IconButton aria-label="알림">🔔</IconButton>
-          <LoginButton to="/login">로그인</LoginButton>
+          <LoginButton href="/login">로그인</LoginButton>
         </UserMenu>
       </HeaderContainer>
     </HeaderWrapper>

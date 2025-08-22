@@ -1,5 +1,5 @@
 export const apiClient = async (reqUrl: string) => {
-  const res = await fetch("http://localhost:3000" + reqUrl);
+  const res = await fetch("http://localhost:3001" + reqUrl);
   if (!res.ok) {
     throw new Error("api 요청 실패");
   }

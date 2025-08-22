@@ -23,9 +23,11 @@ jobs:
         with:
           node-version: "20.x"
       - name: "Install Deps"
-        run: npm install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
       - name: "Test"
-        run: npx vitest --coverage.enabled true
+        run: npx vitest --coverage
       - name: "Report Coverage"
         # Set if: always() to also generate the report if tests are failing
         # Only works if you set `reportOnFailure: true` in your vite config as specified above
@@ -34,4 +36,4 @@ jobs:
         # ./client 경로 추가
         with:
           working-directory: ./client
-          vite-config-path: ./client/vitest.config.ts
+          vite-config-path: ./client/vitest.config.mts

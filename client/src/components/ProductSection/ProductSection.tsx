@@ -1,11 +1,19 @@
+"use client";
 import styled from "styled-components";
+import { useRouter } from "next/navigation";
+import { lazy } from "react";
+import Image from "next/image";
 
-import FlightCard from "../Card/FlightCard/FlightCard";
-import HotelCard from "../Card/HotelCard/HotelCard";
-import ActivityCard from "../Card/ActivityCard/ActivityCard";
-import { useRouter } from "../../hook/useRouter";
+// import FlightCard from "../Card/FlightCard/FlightCard";
+// import HotelCard from "../Card/HotelCard/HotelCard";
+// import ActivityCard from "../Card/ActivityCard/ActivityCard";
+import LoadMoreIcon from "../../../public/load-more.png";
 
 import type { Flight, Hotel, Activity } from "../../type";
+
+const FlightCard = lazy(() => import("../Card/FlightCard/FlightCard"));
+const HotelCard = lazy(() => import("../Card/HotelCard/HotelCard"));
+const ActivityCard = lazy(() => import("../Card/ActivityCard/ActivityCard"));
 
 const ProductContainer = styled.div`
   width: 100%;
@@ -31,7 +39,7 @@ const ProductTitle = styled.h3`
   text-align: start;
 `;
 
-const LoadMore = styled.img`
+const LoadMore = styled(Image)`
   width: 30px;
   height: 30px;
   transition: transform 0.2s ease;
@@ -51,11 +59,11 @@ type Props = {
 
 const CardComponent = (
   category: string,
-  product: Flight | Hotel | Activity,
-  router: ReturnType<typeof useRouter>["router"]
+  product: Flight | Hotel | Activity
 ) => {
+  const router = useRouter();
   const handleClick = () => {
-    router(`/${category}/detail?id=${product.id}`);
+    router.push(`/${category}/detail?id=${product.id}`);
   };
 
   if (category === "flight") {
@@ -94,23 +102,26 @@ export default function ProductSection({
   products,
   loadMore = false,
 }: Props) {
-  const { router } = useRouter();
+  const router = useRouter();
+
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
       <ProductContent>
         <CardContainer>
           {products.map((product) => {
-            return <>{CardComponent(category, product, router)}</>;
+            return (
+              <div key={product.id}>{CardComponent(category, product)}</div>
+            );
           })}
         </CardContainer>
         {loadMore && (
           <LoadMore
-            data-testid="loadMore"
             onClick={() => {
-              router(`/${category}`);
+              router.push(`/${category}`);
             }}
-            src="/public/load-more.png"
+            src={LoadMoreIcon}
+            alt="loadMore"
           />
         )}
       </ProductContent>

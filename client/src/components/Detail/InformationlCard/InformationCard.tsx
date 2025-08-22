@@ -1,7 +1,7 @@
+"use client";
 import styled from "styled-components";
 
 import type { ActivityDetail, CountryInfo, HotelDetail } from "../../../type";
-import { formatArrToStr } from "../../../utils/formatArrToStr";
 
 const InfoSection = styled.div`
   flex: 1;
@@ -64,7 +64,11 @@ function FlightDetail({ detail }: { detail: CountryInfo }) {
         <li>통화: {detail.currency}</li>
         <li>언어: {detail.language}</li>
         <li>추천 음식: {detail.recommendedFood}</li>
-        <li>추천 관광지: {formatArrToStr(detail.recommendedAttractions)}</li>
+        <li>
+          추천 관광지:{" "}
+          {detail.recommendedAttractions &&
+            detail.recommendedAttractions.join(", ")}
+        </li>
       </InfoList>
     </>
   );
@@ -77,9 +81,12 @@ function HotelDetail({ detail }: { detail: HotelDetail }) {
       <InfoList>
         <li>등급: {Array(detail.star).fill("⭐").join("")}</li>
         <li>조식 포함: {detail.breakfastIncluded ? "⭕" : "❌"}</li>
-        <li>편의 시설: {formatArrToStr(detail.amenities)}</li>
+        <li>편의 시설: {detail.amenities && detail.amenities.join(", ")}</li>
         <li>공항 셔틀: {detail.airportShuttle ? "⭕" : "❌"}</li>
-        <li>주변 맛집: {formatArrToStr(detail.nearbyRestaurants)}</li>
+        <li>
+          주변 맛집:{" "}
+          {detail.nearbyRestaurants && detail.nearbyRestaurants.join(", ")}
+        </li>
         <li>고객 평점: {detail.rating} / 5</li>
       </InfoList>
     </>
@@ -92,16 +99,16 @@ function ActivityDetail({ detail }: { detail: ActivityDetail }) {
       <SubTitle>액티비티 정보</SubTitle>
       <InfoList>
         <li>소요시간: {detail.duration}</li>
-        <li>지원 언어: {formatArrToStr(detail.languages)} </li>
+        <li>지원 언어: {detail.languages && detail.languages.join(", ")} </li>
         <li>최소 인원: {detail.minParticipants}명</li>
-        <li>포함 사항: {formatArrToStr(detail.includes)}</li>
+        <li>포함 사항: {detail.includes && detail.includes.join(", ")}</li>
         <li>고객 평점: {detail.rating} / 5</li>
       </InfoList>
     </>
   );
 }
 
-export default function DetailCard({ detail, category }: Props) {
+export default function InformationCard({ detail, category }: Props) {
   return (
     <InfoSection>
       {category === "flight" && inferDetailType(category, detail) && (
