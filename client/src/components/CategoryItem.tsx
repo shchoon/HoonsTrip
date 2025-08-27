@@ -11,13 +11,13 @@ const TitleMap: Record<Category, string> = {
 export default async function CategoryItem({
   category,
   usedPage,
-}: // time,
-{
+  delay,
+}: {
   category: Category;
   usedPage: "home" | "category";
-  // time: number;
+  delay: number;
 }) {
-  // await new Promise((reslove) => setTimeout(reslove, time));
+  await new Promise((reslove) => setTimeout(reslove, delay));
   const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(
     category,
     "no-store"
