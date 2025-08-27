@@ -5,7 +5,7 @@ export default async function fetchFromServer<T>(
   cacheOpt?: CacheOpt
 ): Promise<T> {
   try {
-    const res = await fetch(`http://localhost:3001/${pathName}`, {
+    const res = await fetch(`${process.env.SERVER_BASEURL}/${pathName}`, {
       cache: cacheOpt ? cacheOpt : "default", // 필요하면 캐시 설정
     });
 
