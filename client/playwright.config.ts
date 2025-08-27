@@ -78,15 +78,15 @@ export default defineConfig({
       name: "Frontend",
       reuseExistingServer: !process.env.CI,
     },
-    {
-      command: "npm run start:server --prefix ../",
-      url: "http://localhost:3001",
-      name: "Backend",
-      reuseExistingServer: !process.env.CI,
-      env: {
-        SUPABASE_URL: process.env.SUPABASE_URL as string,
-        SUPABASE_KEY: process.env.SUPABASE_KEY as string,
-      },
-    },
+    // {
+    //   command: "npm run start:server --prefix ../",
+    //   url: "http://localhost:3001",
+    //   name: "Backend",
+    //   reuseExistingServer: !process.env.CI,
+    //   env: {
+    //     SUPABASE_URL: process.env.SUPABASE_URL as string,
+    //     SUPABASE_KEY: process.env.SUPABASE_KEY as string,
+    //   },
+    // },
   ],
 });
