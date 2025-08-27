@@ -4,11 +4,6 @@ import { useRouter } from "next/navigation";
 import { lazy } from "react";
 import Image from "next/image";
 
-// import FlightCard from "../Card/FlightCard/FlightCard";
-// import HotelCard from "../Card/HotelCard/HotelCard";
-// import ActivityCard from "../Card/ActivityCard/ActivityCard";
-import LoadMoreIcon from "../../../public/load-more.png";
-
 import type { Flight, Hotel, Activity } from "../../type";
 
 const FlightCard = lazy(() => import("../Card/FlightCard/FlightCard"));
@@ -120,7 +115,9 @@ export default function ProductSection({
             onClick={() => {
               router.push(`/${category}`);
             }}
-            src={LoadMoreIcon}
+            width={30}
+            height={30}
+            src={"/load-more.png"}
             alt="loadMore"
           />
         )}
