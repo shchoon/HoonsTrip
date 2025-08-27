@@ -1,4 +1,4 @@
-export type Caoursel = {
+export type Carousel = {
   id: number;
   title: string;
   imagePath: string;

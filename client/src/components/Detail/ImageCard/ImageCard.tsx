@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 import type { Activity, Category, Flight, Hotel } from "../../../type";
 
@@ -63,7 +64,6 @@ export default function ImageCard({ category, data }: Props) {
 }
 
 function FlightImage({ data }: { data: Flight }) {
-  console.log(data);
   return (
     <>
       <Image src={data.image} alt={data.arrivalCountry} />

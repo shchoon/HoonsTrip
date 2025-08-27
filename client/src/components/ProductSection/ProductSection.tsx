@@ -1,11 +1,14 @@
+"use client";
 import styled from "styled-components";
-
-import FlightCard from "../Card/FlightCard/FlightCard";
-import HotelCard from "../Card/HotelCard/HotelCard";
-import ActivityCard from "../Card/ActivityCard/ActivityCard";
-import { useRouter } from "../../hook/useRouter";
+import { useRouter } from "next/navigation";
+import { lazy } from "react";
+import Image from "next/image";
 
 import type { Flight, Hotel, Activity } from "../../type";
+
+const FlightCard = lazy(() => import("../Card/FlightCard/FlightCard"));
+const HotelCard = lazy(() => import("../Card/HotelCard/HotelCard"));
+const ActivityCard = lazy(() => import("../Card/ActivityCard/ActivityCard"));
 
 const ProductContainer = styled.div`
   width: 100%;
@@ -31,7 +34,7 @@ const ProductTitle = styled.h3`
   text-align: start;
 `;
 
-const LoadMore = styled.img`
+const LoadMore = styled(Image)`
   width: 30px;
   height: 30px;
   transition: transform 0.2s ease;
@@ -51,20 +54,38 @@ type Props = {
 
 const CardComponent = (
   category: string,
-  product: Flight | Hotel | Activity,
-  router: ReturnType<typeof useRouter>["router"]
+  product: Flight | Hotel | Activity
 ) => {
+  const router = useRouter();
   const handleClick = () => {
-    router(`/${category}/detail?id=${product.id}`);
+    router.push(`/${category}/detail?id=${product.id}`);
   };
 
   if (category === "flight") {
-    return <FlightCard product={product as Flight} onClick={handleClick} />;
+    return (
+      <FlightCard
+        key={product.id}
+        product={product as Flight}
+        onClick={handleClick}
+      />
+    );
   }
   if (category === "hotel") {
-    return <HotelCard product={product as Hotel} onClick={handleClick} />;
+    return (
+      <HotelCard
+        key={product.id}
+        product={product as Hotel}
+        onClick={handleClick}
+      />
+    );
   } else if (category === "activity") {
-    return <ActivityCard product={product as Activity} onClick={handleClick} />;
+    return (
+      <ActivityCard
+        key={product.id}
+        product={product as Activity}
+        onClick={handleClick}
+      />
+    );
   } else {
     return null;
   }
@@ -76,22 +97,28 @@ export default function ProductSection({
   products,
   loadMore = false,
 }: Props) {
-  const { router } = useRouter();
+  const router = useRouter();
+
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
       <ProductContent>
         <CardContainer>
           {products.map((product) => {
-            return <>{CardComponent(category, product, router)}</>;
+            return (
+              <div key={product.id}>{CardComponent(category, product)}</div>
+            );
           })}
         </CardContainer>
         {loadMore && (
           <LoadMore
             onClick={() => {
-              router(`/${category}`);
+              router.push(`/${category}`);
             }}
-            src="/public/load-more.png"
+            width={30}
+            height={30}
+            src={"/load-more.png"}
+            alt="loadMore"
           />
         )}
       </ProductContent>
