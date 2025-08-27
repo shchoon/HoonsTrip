@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import LoadingProduct from "../../loadingUI/LoadingProduct";
 import CategoryItem from "../../components/CategoryItem";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <>

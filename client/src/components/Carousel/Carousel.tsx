@@ -68,8 +68,6 @@ export default function Carousel({
     };
   }, [carouselData]);
 
-  if (!carouselData) return;
-
   return (
     <CarouselContainer>
       <CarouselWrapper>
@@ -77,6 +75,7 @@ export default function Carousel({
           translateX={33.33 * slideCount}
           animation={slideCount !== 0}
           onTransitionEnd={() => {
+            console.log(slideCount);
             if (slideCount === carouselData.length - 3) {
               setSlideCount(0);
             }
