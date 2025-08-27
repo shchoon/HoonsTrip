@@ -12,7 +12,7 @@ export default async function CategoryPage({
 
   return (
     <Suspense fallback={<LoadingProduct itemLength={9} />}>
-      <CategoryItem category={category} usedPage="category" />
+      <CategoryItem category={category} usedPage="category" delay={1000} />
     </Suspense>
   );
 }

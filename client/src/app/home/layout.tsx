@@ -8,10 +8,12 @@ export default async function HomeLayout({
   children: React.ReactNode;
 }) {
   // carouselData server component fetching
-  const data = await fetch("http://localhost:3001/carousel", {
+  const data = await fetch(process.env.SERVER_BASEURL + "/carousel", {
     cache: "force-cache",
   }).then((res) => res.json());
 
+  const formatData = [...data, ...data.slice(0, 3)];
+  console.log(formatData);
   return (
     <div
       style={{
@@ -23,7 +25,7 @@ export default async function HomeLayout({
         alignItems: "center",
       }}
     >
-      <CarouselCom carouselData={data} />
+      <CarouselCom carouselData={formatData} />
       {children}
     </div>
   );

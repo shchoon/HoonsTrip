@@ -32,3 +32,4 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_URL: ${{secrets.SUPABASE_URL}}
           SUPABASE_HOSTNAME: ${{secrets.SUPABASE_HOSTNAME}}
+          SERVER_BASEURL: ${{secrets.SERVER_BASEURL}}
