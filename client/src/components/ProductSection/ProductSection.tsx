@@ -5,6 +5,7 @@ import { lazy } from "react";
 import Image from "next/image";
 
 import type { Flight, Hotel, Activity } from "../../type";
+import Link from "next/link";
 
 const FlightCard = lazy(() => import("../Card/FlightCard/FlightCard"));
 const HotelCard = lazy(() => import("../Card/HotelCard/HotelCard"));
@@ -97,8 +98,6 @@ export default function ProductSection({
   products,
   loadMore = false,
 }: Props) {
-  const router = useRouter();
-
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
@@ -111,15 +110,14 @@ export default function ProductSection({
           })}
         </CardContainer>
         {loadMore && (
-          <LoadMore
-            onClick={() => {
-              router.push(`/${category}`);
-            }}
-            width={30}
-            height={30}
-            src={"/load-more.png"}
-            alt="loadMore"
-          />
+          <Link href={`/${category}`}>
+            <LoadMore
+              width={30}
+              height={30}
+              src={"/load-more.png"}
+              alt="loadMore"
+            />
+          </Link>
         )}
       </ProductContent>
     </ProductContainer>
