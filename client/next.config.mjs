@@ -1,7 +1,6 @@
 import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig = {
-  distDir: "./dist",
   compiler: {
     styledComponents: true,
   },

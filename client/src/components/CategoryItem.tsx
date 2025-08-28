@@ -19,7 +19,6 @@ export default async function CategoryItem({
 }) {
   await new Promise((reslove) => setTimeout(reslove, delay));
   const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(category);
-
   const items =
     usedPage === "home"
       ? data.sort(() => Math.random() - 0.5).slice(0, 3)
