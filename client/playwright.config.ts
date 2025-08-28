@@ -76,7 +76,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: [
     {
-      command: isCI ? "npm run build & npm run start" : "npm run dev",
+      command: isCI ? "npm run build && npm run start" : "npm run dev",
       url: "http://localhost:3000",
       name: "Frontend",
       reuseExistingServer: !process.env.CI,
