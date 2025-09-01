@@ -21,7 +21,13 @@ it("render all UI element for ActivityCard", () => {
     image:
       "https://tfjgwawkwttipyikvclt.supabase.co/storage/v1/object/public/images/activity/victoria.jpg",
   };
-  render(<ActivityCard product={product} onClick={clickEvent} />);
+  render(
+    <ActivityCard
+      testId="activity-card"
+      product={product}
+      onClick={clickEvent}
+    />
+  );
 
   const img = screen.getByAltText(product.activityName) as HTMLImageElement;
   expect(img).toBeInTheDocument();
@@ -34,7 +40,7 @@ it("render all UI element for ActivityCard", () => {
   expect(screen.getByText(`${product.price} ${product.currency}`));
   expect(screen.getByText(product.promotionTag));
 
-  const card = screen.getByTestId("card");
+  const card = screen.getByTestId("activity-card");
   fireEvent.click(card);
   expect(clickEvent).toHaveBeenCalledTimes(1);
 });

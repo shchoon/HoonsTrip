@@ -9,7 +9,7 @@ test.describe("route correct page when button is clicked", () => {
     await page.goto("/home");
   });
 
-  test.only("should route to flight page when click flight button", async ({
+  test("should route to flight page when click flight button", async ({
     page,
   }) => {
     const btn = page.getByRole("link", { name: "항공권" });
