@@ -102,7 +102,7 @@ export default function ProductSection({
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
       <ProductContent>
-        <CardContainer>
+        <CardContainer data-testid={`${category}-section`}>
           {products.map((product) => {
             return (
               <div key={product.id}>{CardComponent(category, product)}</div>

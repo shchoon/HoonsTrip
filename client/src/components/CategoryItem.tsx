@@ -1,6 +1,7 @@
 import type { Activity, Category, Flight, Hotel } from "../type";
 import ProductSection from "./ProductSection/ProductSection";
 import fetchFromServer from "../api/fetch/fetchFromServer";
+import { mockData } from "../mockData/homeCategorData";
 
 const TitleMap: Record<Category, string> = {
   flight: "항공편",
@@ -18,11 +19,19 @@ export default async function CategoryItem({
   delay: number;
 }) {
   await new Promise((reslove) => setTimeout(reslove, delay));
-  const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(category);
-  const items =
-    usedPage === "home"
-      ? data.sort(() => Math.random() - 0.5).slice(0, 3)
-      : data;
+  let items;
+
+  if (process.env.MOCK_DATA) {
+    items = mockData[category];
+  } else {
+    const data = await fetchFromServer<Flight[] | Hotel[] | Activity[]>(
+      category
+    );
+    items =
+      usedPage === "home"
+        ? data.sort(() => Math.random() - 0.5).slice(0, 3)
+        : data;
+  }
 
   const title =
     usedPage === "home" ? "추천 " + TitleMap[category] : TitleMap[category];

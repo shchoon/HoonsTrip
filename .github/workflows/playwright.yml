@@ -23,13 +23,20 @@ jobs:
         run: npm ci
       # - name: Install Replay Chromium
       #   run: npx replayio install
+      - name: Use CI env
+        run: cp .env.test .env.production
+
+      - name: Build Next.js
+        run: npm run build
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          # REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          SUPABASE_URL: ${{secrets.SUPABASE_URL}}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_HOSTNAME: ${{secrets.SUPABASE_HOSTNAME}}
           SERVER_BASEURL: ${{secrets.SERVER_BASEURL}}
+          MOCK_DATA: ${{secrets.MOCK_DATA}}

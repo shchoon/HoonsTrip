@@ -1,12 +1,21 @@
 import { defineConfig, devices } from "@playwright/test";
+// import { fileURLToPath } from "url";
+
+// 1. Get the current file's path
+// const __filename = fileURLToPath(import.meta.url);
+
+// 2. Get the current directory's path from the file path
+// const __dirname = path.dirname(__filename);
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+// import dotenv from "dotenv";
+// import path from "path";
+
+// const ENV = process.env.ENV || "development";
+// dotenv.config({ path: path.resolve(__dirname, `.env.${ENV}`) });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -76,11 +85,17 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: [
     {
-      command: isCI ? "npm run build && npm run start" : "npm run dev",
+      command: isCI ? "npm run start" : "npm run dev:test",
       url: "http://localhost:3000",
-      name: "Frontend",
+      name: "Frontend dev server",
       reuseExistingServer: !process.env.CI,
     },
+    // {
+    //   command: isCI ? "npm run build && npm run start" : "npm run dev",
+    //   url: "http://localhost:3000",
+    //   name: "Frontend",
+    //   reuseExistingServer: !process.env.CI,
+    // },
     // {
     //   command: "npm run start:server --prefix ../",
     //   url: "http://localhost:3001",
