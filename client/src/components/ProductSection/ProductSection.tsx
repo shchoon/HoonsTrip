@@ -65,6 +65,7 @@ const CardComponent = (
   if (category === "flight") {
     return (
       <FlightCard
+        testId={`${category}-card`}
         key={product.id}
         product={product as Flight}
         onClick={handleClick}
@@ -74,6 +75,7 @@ const CardComponent = (
   if (category === "hotel") {
     return (
       <HotelCard
+        testId={`${category}-card`}
         key={product.id}
         product={product as Hotel}
         onClick={handleClick}
@@ -82,6 +84,7 @@ const CardComponent = (
   } else if (category === "activity") {
     return (
       <ActivityCard
+        testId={`${category}-card`}
         key={product.id}
         product={product as Activity}
         onClick={handleClick}

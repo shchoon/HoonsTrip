@@ -14,11 +14,12 @@ import type { Hotel } from "../../../type";
 type Props = {
   product: Hotel;
   onClick: () => void;
+  testId: string;
 };
 
-export default function HotelCard({ product, onClick }: Props) {
+export default function HotelCard({ product, onClick, testId }: Props) {
   return (
-    <Card data-testid="card" onClick={onClick}>
+    <Card data-testid={testId} onClick={onClick}>
       <HotelImage src={product.image} alt={product.hotelName} />
       <InfoBox>
         <HotelName>{product.hotelName}</HotelName>
