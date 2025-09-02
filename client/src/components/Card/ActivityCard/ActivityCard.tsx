@@ -15,11 +15,12 @@ import type { Activity } from "../../../type";
 type Props = {
   product: Activity;
   onClick: () => void;
+  testId: string;
 };
 
-export default function ActivityCard({ product, onClick }: Props) {
+export default function ActivityCard({ product, onClick, testId }: Props) {
   return (
-    <Card data-testid="card" onClick={onClick}>
+    <Card data-testid={testId} onClick={onClick}>
       <ActivityImage src={product.image} alt={product.activityName} />
       <InfoBox>
         <ActivityName>{product.activityName}</ActivityName>

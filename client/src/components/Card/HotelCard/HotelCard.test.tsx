@@ -23,7 +23,9 @@ it("render all UI element for FlightCard", () => {
     image:
       "https://tfjgwawkwttipyikvclt.supabase.co/storage/v1/object/public/images/hotel/hotel5.jpg",
   };
-  render(<HotelCard product={product} onClick={clickEvent} />);
+  render(
+    <HotelCard testId="hotel-card" product={product} onClick={clickEvent} />
+  );
 
   const img = screen.getByAltText(product.hotelName) as HTMLImageElement;
   expect(img).toBeInTheDocument();
@@ -49,7 +51,7 @@ it("render all UI element for FlightCard", () => {
   );
   expect(screen.getByText(product.promotionTag));
 
-  const card = screen.getByTestId("card");
+  const card = screen.getByTestId("hotel-card");
   fireEvent.click(card);
   expect(clickEvent).toHaveBeenCalledTimes(1);
 });

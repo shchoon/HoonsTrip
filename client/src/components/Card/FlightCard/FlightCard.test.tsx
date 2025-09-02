@@ -23,7 +23,9 @@ it("render all UI element for FlightCard", () => {
     image:
       "https://tfjgwawkwttipyikvclt.supabase.co/storage/v1/object/public/images/country/singapore1.jpg",
   };
-  render(<FlightCard product={product} onClick={clickEvent} />);
+  render(
+    <FlightCard testId="flight-card" product={product} onClick={clickEvent} />
+  );
 
   const img = screen.getByAltText(product.arrivalCountry) as HTMLImageElement;
   expect(img).toBeInTheDocument();
@@ -43,7 +45,7 @@ it("render all UI element for FlightCard", () => {
   );
   expect(screen.getByText(product.promotionTag));
 
-  const card = screen.getByTestId("card");
+  const card = screen.getByTestId("flight-card");
   fireEvent.click(card);
   expect(clickEvent).toHaveBeenCalledTimes(1);
 });

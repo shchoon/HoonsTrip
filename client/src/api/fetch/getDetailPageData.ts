@@ -51,7 +51,7 @@ export const getDetailPageData = async (category: Category, id: string) => {
 
         return {
           category: item,
-          title: categoryTitleMap[category],
+          title: categoryTitleMap[item],
           data: data,
         };
       })
