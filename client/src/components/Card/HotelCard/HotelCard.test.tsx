@@ -4,7 +4,7 @@ import { vi } from "vitest";
 import HotelCard from "./HotelCard";
 import type { Hotel } from "../../../type";
 
-it("render all UI element for FlightCard", () => {
+it("render all UI element for HotelCard", () => {
   const clickEvent = vi.fn();
 
   const product: Hotel = {
