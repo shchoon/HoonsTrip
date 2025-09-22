@@ -28,7 +28,6 @@ it("render all UI element for FlightCard", () => {
   );
 
   const img = screen.getByAltText(product.hotelName) as HTMLImageElement;
-  expect(img).toBeInTheDocument();
   expect(img.src).toContain(product.image);
 
   expect(screen.getByRole("heading", { name: product.hotelName }));

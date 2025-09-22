@@ -30,7 +30,6 @@ it("render all UI element for ActivityCard", () => {
   );
 
   const img = screen.getByAltText(product.activityName) as HTMLImageElement;
-  expect(img).toBeInTheDocument();
   expect(img.src).toContain(product.image);
 
   expect(screen.getByRole("heading", { name: product.activityName }));
