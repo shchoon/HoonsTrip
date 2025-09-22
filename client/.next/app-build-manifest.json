@@ -21,11 +21,6 @@
       "static/css/app/home/page.css",
       "static/chunks/app/home/page.js"
     ],
-    "/[category]/detail/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[category]/detail/page.js"
-    ],
     "/[category]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const Card = styled.div`
   min-width: 120px;
@@ -18,7 +19,7 @@ export const Card = styled.div`
   }
 `;
 
-export const CountryImage = styled.img`
+export const CountryImage = styled(Image)`
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;

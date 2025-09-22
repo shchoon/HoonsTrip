@@ -15,12 +15,19 @@ type Props = {
   product: Flight;
   onClick: () => void;
   testId: string;
+  index: number;
 };
 
-export default function FlightCard({ product, onClick, testId }: Props) {
+export default function FlightCard({ product, onClick, testId, index }: Props) {
   return (
     <Card data-testid={testId} onClick={onClick}>
-      <CountryImage src={product.image} alt={product.arrivalCountry} />
+      <CountryImage
+        priority={index === 0 || index === 1 || index === 2}
+        src={product.image}
+        alt={product.arrivalCountry}
+        width={200}
+        height={200}
+      />
       <AirlineName>{product.airlineName}</AirlineName>
       <InfoBox>
         <Route>

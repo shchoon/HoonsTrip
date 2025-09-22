@@ -1,7 +1,8 @@
 import DetailCard from "../../../components/Detail/DetailCard";
-import ProductSection from "../../../components/ProductSection/ProductSection";
 import { getDetailPageData } from "../../../api/fetch/getDetailPageData";
 import { Category } from "../../../type";
+
+import RecoSection from "../../../components/Detail/RecoSection/recoSection";
 
 export default async function DetailPage({
   params,
@@ -12,11 +13,13 @@ export default async function DetailPage({
 }) {
   const { category } = await params;
   const { id } = await searchParams;
+  // const queryClient = new QueryClient();
 
-  const { dataById, informationData, recoData } = await getDetailPageData(
-    category,
-    id
-  );
+  // await queryClient.prefetchQuery({
+  //   queryKey: ["recoData"],
+  //   queryFn: () => getRecoData(category, id),
+  // });
+  const { dataById, informationData } = await getDetailPageData(category, id);
 
   return (
     <>
@@ -26,7 +29,10 @@ export default async function DetailPage({
         informationData={informationData}
       />
       {/* 추천 항목 */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
+      <RecoSection category={category} id={id} />
+      {/* </HydrationBoundary> */}
+      {/* <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         {recoData.map((data) => {
           return (
             <ProductSection
@@ -37,7 +43,7 @@ export default async function DetailPage({
             />
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 }
