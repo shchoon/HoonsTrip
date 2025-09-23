@@ -1,3 +1,5 @@
 {
+  "/[category]/page": "app/[category]/page.js",
+  "/page": "app/page.js",
   "/home/page": "app/home/page.js"
 }

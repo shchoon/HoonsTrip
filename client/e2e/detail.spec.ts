@@ -6,6 +6,7 @@ test.describe("route to DetailPage when card is clicked", () => {
 
     const flightCard = page.getByTestId("flight-card").nth(0);
     await flightCard.click();
+    await page.waitForURL("/flight/detail?id=27");
     await expect(page).toHaveURL("/flight/detail?id=27");
 
     await expect(page.getByAltText("말레이시아")).toBeVisible();
@@ -27,6 +28,7 @@ test.describe("route to DetailPage when card is clicked", () => {
     await page.goto("/home");
     const hotelCard = page.getByTestId("hotel-card").nth(0);
     await hotelCard.click();
+    await page.waitForURL("/hotel/detail?id=6");
     await expect(page).toHaveURL("/hotel/detail?id=6");
 
     await expect(page.getByAltText("Four Seasons Hong Kong")).toBeVisible();
@@ -47,6 +49,7 @@ test.describe("route to DetailPage when card is clicked", () => {
     await page.goto("/home");
     const activityCard = page.getByTestId("activity-card").nth(0);
     await activityCard.click();
+    await page.waitForURL("/activity/detail?id=23");
     await expect(page).toHaveURL("/activity/detail?id=23");
 
     await expect(page.getByAltText("싱가포르 리버 보트 체험")).toBeVisible();
