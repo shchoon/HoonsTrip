@@ -13,7 +13,12 @@ export default function RootLayout({
         <title>My App</title>
         <meta name="description" content="My App is a..." />
       </head>
-      <body>
+      <body
+        style={{
+          maxWidth: 1280,
+          margin: "0 auto",
+        }}
+      >
         <StyledComponentsRegistry>
           <div id="root">
             <Header />
