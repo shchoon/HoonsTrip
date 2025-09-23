@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const Card = styled.div`
@@ -19,7 +20,7 @@ export const Card = styled.div`
   }
 `;
 
-export const ActivityImage = styled.img`
+export const ActivityImage = styled(Image)`
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;

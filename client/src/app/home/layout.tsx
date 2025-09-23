@@ -6,9 +6,12 @@ export default async function HomeLayout({
   children: React.ReactNode;
 }) {
   // carouselData server component fetching
-  const data = await fetch(process.env.SERVER_BASEURL + "/carousel", {
-    cache: "force-cache",
-  }).then((res) => res.json());
+  const data = await fetch(
+    process.env.NEXT_PUBLIC_SERVER_BASEURL + "/carousel",
+    {
+      cache: "force-cache",
+    }
+  ).then((res) => res.json());
 
   const formatData = [...data, ...data.slice(0, 3)];
 

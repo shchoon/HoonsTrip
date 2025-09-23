@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
-import { lazy } from "react";
+import { lazy, memo } from "react";
 import Image from "next/image";
 
 import type { Flight, Hotel, Activity } from "../../type";
@@ -55,7 +55,8 @@ type Props = {
 
 const CardComponent = (
   category: string,
-  product: Flight | Hotel | Activity
+  product: Flight | Hotel | Activity,
+  i: number
 ) => {
   const router = useRouter();
   const handleClick = () => {
@@ -65,6 +66,7 @@ const CardComponent = (
   if (category === "flight") {
     return (
       <FlightCard
+        index={i}
         testId={`${category}-card`}
         key={product.id}
         product={product as Flight}
@@ -95,20 +97,21 @@ const CardComponent = (
   }
 };
 
-export default function ProductSection({
+const ProductSection = memo(function ProductSection({
   category,
   title,
   products,
   loadMore = false,
 }: Props) {
+  // console.log(category);
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
       <ProductContent>
         <CardContainer>
-          {products.map((product) => {
+          {products.map((product, i) => {
             return (
-              <div key={product.id}>{CardComponent(category, product)}</div>
+              <div key={product.id}>{CardComponent(category, product, i)}</div>
             );
           })}
         </CardContainer>
@@ -125,4 +128,6 @@ export default function ProductSection({
       </ProductContent>
     </ProductContainer>
   );
-}
+});
+
+export default ProductSection;

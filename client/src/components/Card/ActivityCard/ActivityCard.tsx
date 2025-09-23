@@ -21,7 +21,12 @@ type Props = {
 export default function ActivityCard({ product, onClick, testId }: Props) {
   return (
     <Card data-testid={testId} onClick={onClick}>
-      <ActivityImage src={product.image} alt={product.activityName} />
+      <ActivityImage
+        width={200}
+        height={200}
+        src={product.image}
+        alt={product.activityName}
+      />
       <InfoBox>
         <ActivityName>{product.activityName}</ActivityName>
         <Location>{product.location}</Location>

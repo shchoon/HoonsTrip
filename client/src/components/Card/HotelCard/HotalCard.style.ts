@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const Card = styled.div`
@@ -17,7 +18,7 @@ export const Card = styled.div`
   }
 `;
 
-export const HotelImage = styled.img`
+export const HotelImage = styled(Image)`
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
