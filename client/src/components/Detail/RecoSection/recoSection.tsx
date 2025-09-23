@@ -13,7 +13,7 @@ export default function RecoSection({ category, id }: Props) {
   const { data } = useQuery<RecoData[]>({
     queryKey: ["recoData", category, id],
     queryFn: async () => await getRecoData(category, id),
-    structuralSharing: true,
+    // structuralSharing: true,
     staleTime: 60 * 1000,
   });
 
