@@ -13,7 +13,9 @@ export default async function fetchFromServer<T>(
     );
 
     if (!res.ok) {
-      throw new Error(`Request failed with status ${res.status}`);
+      if (res.status !== 304) {
+        throw new Error(`Failed to fetch data with status: ${res.status}`);
+      }
     }
 
     const data: T = await res.json();

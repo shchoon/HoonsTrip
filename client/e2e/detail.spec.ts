@@ -9,14 +9,14 @@ test.describe("route to DetailPage when card is clicked", () => {
     await page.waitForURL("/flight/detail?id=27");
     await expect(page).toHaveURL("/flight/detail?id=27");
 
-    await page.waitForResponse(
-      (response) =>
-        response.url().includes("hotel") && response.status() === 200
-    );
-    await page.waitForResponse(
-      (response) =>
-        response.url().includes("activity") && response.status() === 200
-    );
+    // await page.waitForResponse(
+    //   (response) =>
+    //     response.url().includes("hotel") && response.status() === 200
+    // );
+    // await page.waitForResponse(
+    //   (response) =>
+    //     response.url().includes("activity") && response.status() === 200
+    // );
 
     await expect(page.getByAltText("말레이시아")).toBeVisible();
     await expect(page.getByRole("heading", { name: "AirAsia" })).toBeVisible();

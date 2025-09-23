@@ -14,7 +14,10 @@ export default async function DetailPage({
   const { category } = await params;
   const { id } = await searchParams;
 
-  const { dataById, informationData } = await getDetailPageData(category, id);
+  const { dataById, informationData, recoData } = await getDetailPageData(
+    category,
+    id
+  );
 
   return (
     <>
@@ -24,7 +27,7 @@ export default async function DetailPage({
         informationData={informationData}
       />
       {/* 추천 항목 */}
-      <RecoSection category={category} id={id} />
+      <RecoSection recoDatas={recoData} />
     </>
   );
 }

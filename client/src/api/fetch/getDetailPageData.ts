@@ -22,9 +22,22 @@ const categoryTitleMap: Record<Category, string> = {
   //   새로운 카테고리 추가시 알맞게 항목 추가
 };
 
+export type RecoItem = {
+  category: Category;
+  title: string;
+  data: Flight[] | Hotel[] | Activity[];
+};
+
 const categoryMap: Category[] = ["flight", "hotel", "activity"];
 
-export const getDetailPageData = async (category: Category, id: string) => {
+export const getDetailPageData = async (
+  category: Category,
+  id: string
+): Promise<{
+  dataById: Flight | Hotel | Activity;
+  informationData: CountryInfo | HotelDetail | ActivityDetail;
+  recoData: RecoItem[];
+}> => {
   const dataById = await fetchFromServer<Flight | Hotel | Activity>(
     category + "?id=" + id
   );
