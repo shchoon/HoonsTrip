@@ -58,13 +58,36 @@ export default function Carousel({
 
   useEffect(() => {
     if (!carouselData) return;
+    let slideCarousel: NodeJS.Timeout | null;
 
-    const slideCarousel = setInterval(() => {
-      setSlideCount((prev) => prev + 1);
-    }, 3000);
+    const start = () => {
+      if (!slideCarousel) {
+        slideCarousel = setInterval(() => {
+          setSlideCount((prev) => prev + 1);
+        }, 3000);
+      }
+    };
 
+    const stop = () => {
+      if (slideCarousel) {
+        clearInterval(slideCarousel);
+        slideCarousel = null;
+      }
+    };
+
+    const handleVisivility = () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    };
+
+    start();
+    document.addEventListener("visibilitychange", handleVisivility);
     return () => {
-      clearInterval(slideCarousel);
+      stop();
+      document.removeEventListener("visibilitychange", handleVisivility);
     };
   }, [carouselData]);
 
@@ -75,7 +98,6 @@ export default function Carousel({
           translateX={33.33 * slideCount}
           animation={slideCount !== 0}
           onTransitionEnd={() => {
-            console.log(slideCount);
             if (slideCount === carouselData.length - 3) {
               setSlideCount(0);
             }

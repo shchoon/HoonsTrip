@@ -1,7 +1,8 @@
 import DetailCard from "../../../components/Detail/DetailCard";
-import ProductSection from "../../../components/ProductSection/ProductSection";
 import { getDetailPageData } from "../../../api/fetch/getDetailPageData";
 import { Category } from "../../../type";
+
+import RecoSection from "../../../components/Detail/RecoSection/recoSection";
 
 export default async function DetailPage({
   params,
@@ -26,18 +27,7 @@ export default async function DetailPage({
         informationData={informationData}
       />
       {/* 추천 항목 */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        {recoData.map((data) => {
-          return (
-            <ProductSection
-              key={data.category}
-              category={data.category}
-              title={data.title}
-              products={data.data}
-            />
-          );
-        })}
-      </div>
+      <RecoSection recoDatas={recoData} />
     </>
   );
 }

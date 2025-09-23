@@ -1,19 +1,5 @@
-import type {
-  Activity,
-  Category,
-  Hotel,
-  Flight,
-  CountryInfo,
-  HotelDetail,
-  ActivityDetail,
-} from "../../type";
-import fetchFromServer from "./fetchFromServer";
-
-const fetchDetailMap: Record<Category, string> = {
-  flight: `country?country=`,
-  hotel: `hotelDetail?id=`,
-  activity: `activityDetail?id=`,
-};
+import type { Flight, Hotel, Activity, Category } from "../type";
+import fetchFromServer from "./fetch/fetchFromServer";
 
 const categoryTitleMap: Record<Category, string> = {
   flight: "이런 항공편은 어떠세요?",
@@ -22,34 +8,19 @@ const categoryTitleMap: Record<Category, string> = {
   //   새로운 카테고리 추가시 알맞게 항목 추가
 };
 
-export type RecoItem = {
-  category: Category;
-  title: string;
-  data: Flight[] | Hotel[] | Activity[];
-};
-
 const categoryMap: Category[] = ["flight", "hotel", "activity"];
 
-export const getDetailPageData = async (
+export default async function getRecoData(
   category: Category,
   id: string
-): Promise<{
-  dataById: Flight | Hotel | Activity;
-  informationData: CountryInfo | HotelDetail | ActivityDetail;
-  recoData: RecoItem[];
-}> => {
+): Promise<
+  { category: Category; title: string; data: Flight[] | Hotel[] | Activity[] }[]
+> {
   const dataById = await fetchFromServer<Flight | Hotel | Activity>(
     category + "?id=" + id
   );
 
   const country = dataById.country;
-
-  const detailQuery = category === "flight" ? country : id;
-
-  const informationData = await fetchFromServer<
-    CountryInfo | HotelDetail | ActivityDetail
-  >(fetchDetailMap[category] + detailQuery);
-
   const recoData = await Promise.all(
     categoryMap
       .filter((item) => item !== category)
@@ -70,9 +41,5 @@ export const getDetailPageData = async (
       })
   );
 
-  return {
-    dataById: dataById,
-    informationData: informationData,
-    recoData: recoData,
-  };
-};
+  return recoData;
+}

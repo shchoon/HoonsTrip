@@ -90,3 +90,9 @@ export type FetchCategoryMap = {
   hotel: Hotel[];
   activity: Activity[];
 };
+
+export type RecoData = {
+  category: Category;
+  title: string;
+  data: Flight[] | Hotel[] | Activity[];
+};
